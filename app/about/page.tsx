@@ -33,7 +33,7 @@ const BELIEFS = [
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-[1240px] px-5">
+    <div className="mx-auto max-w-310 px-5">
       {/* opening */}
       <header className="grid gap-10 border-b border-line py-16 lg:grid-cols-12 lg:py-24">
         <div className="lg:col-span-8">

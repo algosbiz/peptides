@@ -28,7 +28,7 @@ export default function CoaPage() {
   const sample = COAS.find((c) => c.batch === "GC-2640")!;
 
   return (
-    <div className="mx-auto max-w-[1240px] px-5">
+    <div className="mx-auto max-w-310 px-5">
       {/* header */}
       <header className="grid gap-8 border-b border-line py-16 lg:grid-cols-12 lg:py-20">
         <div className="lg:col-span-8">

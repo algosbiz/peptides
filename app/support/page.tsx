@@ -34,7 +34,7 @@ const CHANNELS = [
 
 export default function SupportPage() {
   return (
-    <div className="mx-auto max-w-[1280px] px-5">
+    <div className="mx-auto max-w-7xl px-5">
       <header className="glow grid gap-8 border-b border-line py-16 lg:py-20">
         <div className="max-w-3xl">
           <p className="label text-lime">Support</p>

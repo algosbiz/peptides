@@ -42,7 +42,7 @@ const NOTES = [
 
 export default function ResearchPage() {
   return (
-    <div className="mx-auto max-w-[1280px] px-5">
+    <div className="mx-auto max-w-310 px-5">
       <header className="glow grid gap-8 border-b border-line py-16 lg:grid-cols-12 lg:py-20">
         <div className="lg:col-span-8">
           <p className="label text-lime">Research notes · {NOTES.length} entries</p>

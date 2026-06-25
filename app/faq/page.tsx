@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function FaqPage() {
   return (
-    <div className="mx-auto max-w-[1240px] px-5">
+    <div className="mx-auto max-w-310 px-5">
       <header className="grid gap-8 border-b border-line py-16 lg:grid-cols-12 lg:py-20">
         <div className="lg:col-span-8">
           <p className="label">FAQ · {FAQ.reduce((n, g) => n + g.items.length, 0)} answers</p>
