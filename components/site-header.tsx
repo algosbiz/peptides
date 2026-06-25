@@ -84,7 +84,7 @@ export function SiteHeader() {
                       href="/shop"
                       className="datum mt-1 flex items-center justify-between border-t border-line px-3 py-2.5 text-sm text-lime"
                     >
-                      All 18 reagents <span aria-hidden>→</span>
+                      All reagents <span aria-hidden>→</span>
                     </Link>
                   </div>
                 </div>

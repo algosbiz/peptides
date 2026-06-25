@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { PRODUCTS } from "@/lib/data";
+import { getProductsByNos } from "@/lib/db/queries";
 import { StatusPill, formatPrice, SectionIndex } from "@/components/ui";
 
 const BEST = ["DR-002", "DR-024", "DR-007", "DR-011", "DR-004", "DR-018"];
 
-export function Catalogue() {
-  const featured = PRODUCTS.find((p) => p.no === "DR-002")!;
-  const rows = BEST.map((no) => PRODUCTS.find((p) => p.no === no)!);
+export async function Catalogue() {
+  const rows = await getProductsByNos(BEST);
+  const featured = rows.find((p) => p.no === "DR-002") ?? rows[0];
+  if (!featured) return null;
 
   return (
     <section className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
