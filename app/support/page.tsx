@@ -5,7 +5,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Support",
   description:
-    "Reach the Datum lab about purity, batches, dispatch and returns. We answer chemistry and logistics — not protocols.",
+    "Reach the Elite Biotech lab about purity, batches, dispatch and returns. We answer chemistry and logistics — not protocols.",
 };
 
 const CHANNELS = [

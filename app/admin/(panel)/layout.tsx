@@ -16,7 +16,7 @@ export default async function PanelLayout({
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5">
           <div className="flex items-center gap-3">
             <Link href="/admin" className="font-display text-lg font-extrabold italic tracking-tight text-ink">
-              LAZARUS LABS<span className="text-lime">.</span>
+              ELITE BIOTECH<span className="text-lime">.</span>
             </Link>
             <span className="label rounded-full border border-line px-2.5 py-1 text-ink-2">
               Admin

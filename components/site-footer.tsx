@@ -23,7 +23,7 @@ const COLUMNS: { head: string; links: { label: string; href: string }[] }[] = [
   {
     head: "Company",
     links: [
-      { label: "About Datum", href: "/about" },
+      { label: "About Elite Biotech", href: "/about" },
       { label: "FAQ", href: "/faq" },
       { label: "Track order", href: "/track-order" },
       { label: "Support", href: "/support" },
@@ -115,7 +115,7 @@ export function SiteFooter() {
             They are not therapeutic goods, are not for human or veterinary use,
             and must not be administered to or consumed by any living organism.
             Purchasers must be 18 years or older. Nothing on this site is medical
-            advice. <span className="text-on-forest">Datum is a fictional brand</span>{" "}
+            advice. <span className="text-on-forest">Elite Biotech is a fictional brand</span>{" "}
             built as a design exercise — no products are for sale.
           </p>
           <div className="datum mt-6 flex flex-col justify-between gap-3 text-xs text-on-forest-2 sm:flex-row sm:items-center">

@@ -25,15 +25,15 @@ const plex = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://datum.example"),
+  metadataBase: new URL("https://elitebiotech.example"),
   title: {
-    default: "Datum — Research reagents, measured.",
-    template: "%s — Datum",
+    default: "Elite Biotech — Research reagents, measured.",
+    template: "%s — Elite Biotech",
   },
   description:
     "Research-grade peptides, dispatched from Western Australia. Every batch is third-party assayed by HPLC and LC-MS — and we hand you the numbers. For laboratory and research use only. 18+.",
   openGraph: {
-    title: "Datum — Research reagents, measured.",
+    title: "Elite Biotech — Research reagents, measured.",
     description:
       "Third-party assayed research peptides from Western Australia. The numbers travel with the vial.",
     type: "website",

@@ -113,10 +113,10 @@ export function VialMockup({
       />
       <g fill="var(--color-onlime)" textAnchor="middle">
         <text x="110" y="135" fontSize="8" fontWeight="800" letterSpacing="1.5">
-          LAZARUS
+          ELITE
         </text>
         <text x="110" y="144" fontSize="6.5" fontWeight="700" letterSpacing="3">
-          LABS
+          BIOTECH
         </text>
         <text
           x="110"

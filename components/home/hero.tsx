@@ -9,6 +9,13 @@ const HERO_STATS = [
   { value: "24h", label: "WA dispatch cutoff" },
 ];
 
+// Adapted from Elite Biotech's three banner value-props — reworded, not copied.
+const HERO_PROOFS = [
+  "Fast dispatch — out the door within 24 hours",
+  "99% purity, lab-verified on every batch",
+  "Trusted by researchers right across Australia",
+];
+
 function Tick() {
   return (
     <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-sm bg-lime text-[10px] font-bold text-onlime">
@@ -53,7 +60,7 @@ export function Hero() {
             </p>
 
             <h1 className="font-display mt-6 text-[clamp(2.8rem,7.5vw,5.6rem)] font-extrabold uppercase leading-[0.92] tracking-tight text-ink">
-              Premium
+              Lab-verified
               <br />
               research
               <br />
@@ -62,17 +69,21 @@ export function Hero() {
               <span className="mark">Australia.</span>
             </h1>
 
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-2">
-              Third-party COAs, WA express dispatch, and flexible pay — in one
-              clean, account-secured checkout. Built for serious research buyers.
-            </p>
+            <ul className="mt-7 max-w-xl space-y-3">
+              {HERO_PROOFS.map((proof) => (
+                <li key={proof} className="flex items-start gap-3 text-lg leading-snug text-ink-2">
+                  <Tick />
+                  <span>{proof}</span>
+                </li>
+              ))}
+            </ul>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Link
                 href="/shop"
                 className="datum group inline-flex items-center gap-2 rounded-full bg-lime px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-onlime transition-opacity hover:opacity-90"
               >
-                Shop best sellers
+                Shop the peptides
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>

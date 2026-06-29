@@ -11,10 +11,10 @@ export default function AdminLoginPage() {
     <div className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-5 py-16">
       <Link href="/" className="group mb-8 flex flex-col leading-[0.82]">
         <span className="font-display text-2xl font-extrabold italic tracking-tight text-ink">
-          LAZARUS
+          ELITE
         </span>
         <span className="font-display text-2xl font-extrabold italic tracking-tight text-ink">
-          LABS<span className="text-lime">.</span>
+          BIOTECH<span className="text-lime">.</span>
         </span>
       </Link>
 

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { NAV, SITE, CATEGORY_ORDER, slugify } from "@/lib/data";
+import { NAV, SITE } from "@/lib/data";
 
 function Icon({ d, label }: { d: string; label: string }) {
   return (
@@ -32,75 +32,38 @@ const ICONS = {
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [shopOpen, setShopOpen] = useState(false);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-line bg-[oklch(0.045_0.012_258)]">
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-6 px-5 py-3.5">
         {/* logo lockup */}
-        <Link href="/" className="group flex flex-col leading-[0.82]" aria-label="Lazarus Labs, home">
-          <span className="font-display text-xl font-extrabold italic tracking-tight text-ink sm:text-2xl">
-            LAZARUS
-          </span>
-          <span className="font-display text-xl font-extrabold italic tracking-tight text-ink sm:text-2xl">
-            LABS<span className="text-lime">.</span>
-          </span>
+        <Link href="/" className="group flex shrink-0 items-center" aria-label="Home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.avif"
+            alt="Elite Biotech"
+            width={450}
+            height={161}
+            className="h-12 w-auto sm:h-14"
+          />
         </Link>
 
         {/* desktop nav */}
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {NAV.map((item) =>
-            item.href === "/shop" ? (
-              <div key={item.href} className="group relative">
-                <Link
-                  href="/shop"
-                  className={`datum flex items-center gap-1 text-sm font-medium uppercase tracking-wide transition-colors ${
-                    isActive(item.href)
-                      ? "text-lime"
-                      : "text-ink-2 hover:text-ink"
-                  }`}
-                >
-                  Shop
-                  <span className="text-[0.6em] transition-transform group-hover:rotate-180">▼</span>
-                </Link>
-                {/* dropdown */}
-                <div className="invisible absolute left-1/2 top-full z-50 w-[420px] -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="ruled bg-paper-2 p-2 shadow-2xl shadow-black/40">
-                    <div className="grid grid-cols-2 gap-1">
-                      {CATEGORY_ORDER.map((c) => (
-                        <Link
-                          key={c}
-                          href={`/shop#${slugify(c)}`}
-                          className="datum rounded-sm px-3 py-2.5 text-sm text-ink-2 transition-colors hover:bg-paper-3 hover:text-ink"
-                        >
-                          {c}
-                        </Link>
-                      ))}
-                    </div>
-                    <Link
-                      href="/shop"
-                      className="datum mt-1 flex items-center justify-between border-t border-line px-3 py-2.5 text-sm text-lime"
-                    >
-                      All reagents <span aria-hidden>→</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`datum text-sm font-medium uppercase tracking-wide transition-colors ${
-                  isActive(item.href) ? "text-lime" : "text-ink-2 hover:text-ink"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Primary">
+          {NAV.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`datum whitespace-nowrap text-sm font-medium uppercase tracking-wide transition-colors ${
+                isActive(item.href) ? "text-lime" : "text-ink-2 hover:text-ink"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         {/* right icons */}
@@ -146,42 +109,14 @@ export function SiteHeader() {
         <div className="border-t border-line bg-paper lg:hidden">
           <nav className="mx-auto flex max-w-[1280px] flex-col px-5 py-2" aria-label="Mobile">
             {NAV.map((item) => (
-              <div key={item.href} className="border-b border-line last:border-b-0">
-                <div className="flex items-center justify-between">
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="flex-1 py-4 text-base uppercase tracking-wide text-ink"
-                  >
-                    {item.label}
-                  </Link>
-                  {item.href === "/shop" && (
-                    <button
-                      type="button"
-                      onClick={() => setShopOpen((v) => !v)}
-                      className="datum px-3 py-4 text-lg text-lime"
-                      aria-label="Toggle categories"
-                      aria-expanded={shopOpen}
-                    >
-                      {shopOpen ? "−" : "+"}
-                    </button>
-                  )}
-                </div>
-                {item.href === "/shop" && shopOpen && (
-                  <div className="grid grid-cols-2 gap-1 pb-3">
-                    {CATEGORY_ORDER.map((c) => (
-                      <Link
-                        key={c}
-                        href={`/shop#${slugify(c)}`}
-                        onClick={() => setOpen(false)}
-                        className="datum py-2 text-sm text-ink-2"
-                      >
-                        {c}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="border-b border-line py-4 text-base uppercase tracking-wide text-ink last:border-b-0"
+              >
+                {item.label}
+              </Link>
             ))}
             <p className="label py-4 text-ink-3">
               {SITE.tagline} · Ships from WA · 18+

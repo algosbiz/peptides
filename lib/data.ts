@@ -1,26 +1,27 @@
-// Datum — content model.
+// Elite Biotech — content model.
 // Placeholder brand + original copy. Compound names are generic research
 // reagents. Everything here is framed around format, purity and logistics —
 // never human use. For laboratory and research use only.
 
 export const SITE = {
-  name: "Lazarus Labs",
-  wordmark: "LAZARUS LABS",
+  name: "Elite Biotech",
+  wordmark: "ELITE BIOTECH",
   tagline: "Premium research peptides — Australia.",
   origin: "Boorloo / Perth, Western Australia",
   abn: "00 000 000 000",
-  email: "lab@datum.example",
+  email: "lab@elitebiotech.example",
 } as const;
 
 export type NavItem = { label: string; href: string; note?: string };
 
 export const NAV: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop", note: "the range" },
-  { label: "Research", href: "/research", note: "the science" },
-  { label: "COA library", href: "/certificate-of-analysis", note: "every batch" },
-  { label: "Track order", href: "/track-order" },
-  { label: "Support", href: "/support" },
+  { label: "Products", href: "/shop", note: "the range" },
+  { label: "Certificate Of Analysis", href: "/certificate-of-analysis", note: "every batch" },
+  { label: "FAQ", href: "/faq" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact Us", href: "/support" },
+  { label: "Disclaimer", href: "/disclaimer" },
 ];
 
 export const slugify = (s: string) =>

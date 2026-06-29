@@ -100,7 +100,7 @@ export default function CoaPage() {
 
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line px-6 py-4">
             <p className="datum text-xs text-ink-3">
-              Analysed by an independent NATA-style analytical laboratory. Datum did not run this assay.
+              Analysed by an independent NATA-style analytical laboratory. Elite Biotech did not run this assay.
             </p>
             <span className="datum cursor-not-allowed text-xs text-ink-3 line-through">
               Download PDF (in-account)

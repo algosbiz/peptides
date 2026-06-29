@@ -5,7 +5,7 @@ import { SITE } from "@/lib/data";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Datum is a research-reagent supplier built around one rule: the number on the certificate is the number in the vial. Based in Western Australia.",
+    "Elite Biotech is a research-reagent supplier built around one rule: the number on the certificate is the number in the vial. Based in Western Australia.",
 };
 
 const SPEC: [string, string][] = [
@@ -39,11 +39,11 @@ export default function AboutPage() {
         <div className="lg:col-span-8">
           <p className="label">About {SITE.name}</p>
           <h1 className="font-display mt-6 text-[clamp(2.4rem,6.4vw,5rem)] leading-[0.98] tracking-tight text-ink">
-            We started Datum because we were tired of trusting{" "}
+            We started Elite Biotech because we were tired of trusting{" "}
             <span className="italic">screenshots.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-2">
-            Datum supplies research-grade peptides out of Western Australia. The
+            Elite Biotech supplies research-grade peptides out of Western Australia. The
             whole company is organised around a single, almost boring rule: the
             number on the certificate is the number in the vial. Everything else
             — the catalogue, the Pass, the plain brown box — is just plumbing in

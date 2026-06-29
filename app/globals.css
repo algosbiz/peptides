@@ -1,40 +1,43 @@
 @import "tailwindcss";
 
 /*
-  DATUM — design system · DARK
+  ELITE BIOTECH — design system · DARK
   Premium dark research-lab aesthetic: near-black tinted surfaces, a single
-  committed lime accent used boldly, navy-charcoal lifted panels, hairline
+  committed electric-blue accent used boldly, deep-navy lifted panels, hairline
   white borders. Neutrals are tinted in OKLCH (never flat #000/#fff).
+  Palette tuned to Elite Biotech's blue: black header, deep-navy hero,
+  vivid azure accents. (Accent vars keep their original *-lime names so the
+  whole component layer remaps in one place.)
 */
 
 @theme {
-  /* surfaces — near-black, faint green tint, then lifted panels */
-  --color-paper: oklch(0.16 0.012 162);
-  --color-paper-2: oklch(0.205 0.016 170);
-  --color-paper-3: oklch(0.255 0.018 172);
+  /* surfaces — near-black, faint blue tint, then lifted panels */
+  --color-paper: oklch(0.155 0.018 255);
+  --color-paper-2: oklch(0.205 0.024 255);
+  --color-paper-3: oklch(0.255 0.028 256);
 
-  /* text — near-white, faint warm-green tint */
-  --color-ink: oklch(0.955 0.012 150);
-  --color-ink-2: oklch(0.74 0.014 158);
-  --color-ink-3: oklch(0.6 0.012 160);
+  /* text — near-white, faint cool-blue tint */
+  --color-ink: oklch(0.955 0.008 250);
+  --color-ink-2: oklch(0.74 0.012 252);
+  --color-ink-3: oklch(0.6 0.012 254);
 
   /* hairlines — white at low alpha */
   --color-line: oklch(1 0 0 / 0.09);
   --color-line-2: oklch(1 0 0 / 0.18);
 
-  /* forest — deep green feature panel (focal sections / footer) */
-  --color-forest: oklch(0.305 0.05 158);
-  --color-forest-2: oklch(0.24 0.045 158);
+  /* forest — deep blue feature panel (focal sections / footer) */
+  --color-forest: oklch(0.315 0.085 256);
+  --color-forest-2: oklch(0.24 0.075 257);
   --color-forest-line: oklch(1 0 0 / 0.12);
-  --color-on-forest: oklch(0.96 0.012 150);
-  --color-on-forest-2: oklch(0.78 0.014 158);
+  --color-on-forest: oklch(0.96 0.01 250);
+  --color-on-forest-2: oklch(0.8 0.015 252);
 
-  /* lime — the committed accent */
-  --color-lime: oklch(0.86 0.2 123);
-  --color-lime-dim: oklch(0.7 0.16 123);
+  /* accent — the committed electric blue */
+  --color-lime: oklch(0.68 0.175 252);
+  --color-lime-dim: oklch(0.58 0.15 252);
 
-  /* text colour for use ON lime */
-  --color-onlime: oklch(0.2 0.03 160);
+  /* text colour for use ON the blue accent (near-white) */
+  --color-onlime: oklch(0.99 0.006 250);
 
   /* clay — warm signal (status) */
   --color-clay: oklch(0.74 0.15 58);
@@ -128,12 +131,12 @@
     background-size: 100% 1px;
   }
 
-  /* soft lime glow for focal surfaces */
+  /* soft blue glow for focal surfaces */
   .glow {
     background:
       radial-gradient(
         60% 70% at 80% 0%,
-        oklch(0.86 0.2 123 / 0.1),
+        oklch(0.68 0.175 252 / 0.16),
         transparent 60%
       );
   }

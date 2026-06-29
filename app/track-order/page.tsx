@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Track order",
   description:
-    "Track a Datum dispatch with your order number and email. Tracked AusPost, dispatched from Western Australia.",
+    "Track an Elite Biotech dispatch with your order number and email. Tracked AusPost, dispatched from Western Australia.",
 };
 
 const TIMELINE = [

@@ -27,7 +27,7 @@ export function Pass() {
               {/* membership card mock */}
               <div className="bg-forest p-5 text-on-forest">
                 <div className="flex items-start justify-between">
-                  <span className="label text-on-forest-2!">Datum Pass</span>
+                  <span className="label text-on-forest-2!">Elite Pass</span>
                   <span className="datum text-xs text-lime">ACTIVE</span>
                 </div>
                 <p className="datum mt-8 text-lg tracking-[0.2em] text-on-forest">
@@ -63,7 +63,7 @@ export function Pass() {
           {/* pitch — right */}
           <div className="lg:col-span-6">
             <SectionIndex n={4} total={7}>
-              Datum Pass
+              Elite Pass
             </SectionIndex>
             <h2 className="font-display mt-5 text-[clamp(1.9rem,4vw,3rem)] font-bold leading-[1.05] tracking-tight text-ink">
               A free account keeps your paperwork. The Pass{" "}
