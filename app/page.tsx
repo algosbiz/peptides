@@ -4,7 +4,7 @@ import { Catalogue } from "@/components/home/catalogue";
 import { Assurance } from "@/components/home/assurance";
 import { Pass } from "@/components/home/pass";
 import { Principles } from "@/components/home/principles";
-import { Voices } from "@/components/home/voices";
+import { Reviews } from "@/components/home/reviews";
 import { Questions } from "@/components/home/questions";
 
 export default function HomePage() {
@@ -16,7 +16,7 @@ export default function HomePage() {
       <Assurance />
       <Pass />
       <Principles />
-      <Voices />
+      <Reviews />
       <Questions />
     </>
   );

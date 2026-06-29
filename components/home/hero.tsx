@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HplcTrace } from "@/components/hplc-trace";
 import { VideoBackground } from "@/components/video-background";
+import { ScrambleWord } from "@/components/home/scramble-word";
 import { COAS, SITE } from "@/lib/data";
 
 const HERO_STATS = [
@@ -59,14 +60,14 @@ export function Hero() {
               <span>Research peptides</span>
             </p>
 
-            <h1 className="font-display mt-6 text-[clamp(2.8rem,7.5vw,5.6rem)] font-extrabold uppercase leading-[0.92] tracking-tight text-ink">
-              Lab-verified
+            <h1 className="font-display mt-6 text-[clamp(2.4rem,5.6vw,4.4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-ink">
+              <ScrambleWord text="Lab-verified" />
               <br />
-              research
+              <ScrambleWord text="research" />
               <br />
-              peptides —
+              <ScrambleWord text="peptides" /> —
               <br />
-              <span className="mark">Australia.</span>
+              <ScrambleWord text="Australia." className="mark" />
             </h1>
 
             <ul className="mt-7 max-w-xl space-y-3">
