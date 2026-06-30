@@ -16,12 +16,11 @@ export type NavItem = { label: string; href: string; note?: string };
 
 export const NAV: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Products", href: "/shop", note: "the range" },
-  { label: "Certificate Of Analysis", href: "/certificate-of-analysis", note: "every batch" },
-  { label: "FAQ", href: "/faq" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact Us", href: "/support" },
-  { label: "Disclaimer", href: "/disclaimer" },
+  { label: "Shop", href: "/shop", note: "the range" },
+  { label: "Research", href: "/research", note: "the science" },
+  { label: "COA library", href: "/certificate-of-analysis", note: "every batch" },
+  { label: "Track order", href: "/track-order" },
+  { label: "Support", href: "/support" },
 ];
 
 export const slugify = (s: string) =>
@@ -135,30 +134,6 @@ export const REVIEWS: Review[] = [
     context: "Reordered 3×",
     rating: 4,
     body: "Knocked a star because one line went to pre-order right when I needed it. But they emailed the restock date instead of hiding it. I'll take honesty over a fake 'in stock' button.",
-  },
-  {
-    handle: "T. — biochem postdoc",
-    context: "BPC-157 · repeat buyer",
-    rating: 5,
-    body: "Vials arrive sealed, the lyophilised cake is intact, and it goes back into solution clear every time. The retention time on the COA lined up with our own column. No surprises.",
-  },
-  {
-    handle: "Private research account, VIC",
-    context: "First order",
-    rating: 5,
-    body: "Plain outer box, tracked the whole way, and the batch sheet was sitting in my inbox before the parcel left WA. Exactly the boring, predictable experience a lab wants.",
-  },
-  {
-    handle: "K. — analytical chemist",
-    context: "QC cross-check",
-    rating: 5,
-    body: "I assay everything that comes through the door. Area-percent matched the certificate within tolerance on both lots I've checked so far. That's the whole reason I switched suppliers.",
-  },
-  {
-    handle: "Lab manager, QLD",
-    context: "Reordered 4×",
-    rating: 5,
-    body: "Dispatch is genuinely next-day from order, and when a line is out they say so. Four orders in and the paperwork has been clean every single time.",
   },
 ];
 

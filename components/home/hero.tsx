@@ -1,20 +1,12 @@
 import Link from "next/link";
 import { HplcTrace } from "@/components/hplc-trace";
 import { VideoBackground } from "@/components/video-background";
-import { ScrambleWord } from "@/components/home/scramble-word";
 import { COAS, SITE } from "@/lib/data";
 
 const HERO_STATS = [
   { value: "99%", label: "Tested purity" },
   { value: "4.9★", label: "Verified rating" },
   { value: "24h", label: "WA dispatch cutoff" },
-];
-
-// Adapted from Elite Biotech's three banner value-props — reworded, not copied.
-const HERO_PROOFS = [
-  "Fast dispatch — out the door within 24 hours",
-  "99% purity, lab-verified on every batch",
-  "Trusted by researchers right across Australia",
 ];
 
 function Tick() {
@@ -60,31 +52,27 @@ export function Hero() {
               <span>Research peptides</span>
             </p>
 
-            <h1 className="font-display mt-6 text-[clamp(2.4rem,5.6vw,4.4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-ink">
-              <ScrambleWord text="Lab-verified" />
+            <h1 className="font-display mt-6 text-[clamp(2.8rem,7.5vw,5.6rem)] font-extrabold uppercase leading-[0.92] tracking-tight text-ink">
+              Premium
               <br />
-              <ScrambleWord text="research" />
+              research
               <br />
-              <ScrambleWord text="peptides" /> —
+              peptides —
               <br />
-              <ScrambleWord text="Australia." className="mark" />
+              <span className="mark">Australia.</span>
             </h1>
 
-            <ul className="mt-7 max-w-xl space-y-3">
-              {HERO_PROOFS.map((proof) => (
-                <li key={proof} className="flex items-start gap-3 text-lg leading-snug text-ink-2">
-                  <Tick />
-                  <span>{proof}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-2">
+              Third-party COAs, WA express dispatch, and flexible pay — in one
+              clean, account-secured checkout. Built for serious research buyers.
+            </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Link
                 href="/shop"
                 className="datum group inline-flex items-center gap-2 rounded-full bg-lime px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-onlime transition-opacity hover:opacity-90"
               >
-                Shop the peptides
+                Shop best sellers
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
