@@ -40,14 +40,14 @@ export const FIGURES: Figure[] = [
 export type Status = "in-stock" | "low" | "pre-order" | "retired";
 
 export type Category =
-  | "GLP / Metabolic"
-  | "Tissue & Repair"
-  | "Secretagogues"
-  | "Cognitive"
+  | "GLP-1 / Incretin"
+  | "Tissue Repair"
+  | "GH Secretagogues"
+  | "Nootropic & Neuropeptide"
   | "Melanocortin"
-  | "Longevity"
-  | "Copper"
-  | "Supplies";
+  | "Mitochondrial & Longevity"
+  | "Copper Peptides"
+  | "Research Supplies";
 
 export type Product = {
   no: string; // catalogue number, e.g. "DR-014"
@@ -68,13 +68,14 @@ export type Product = {
 // /admin. Read products with the helpers in lib/db/queries.ts.
 
 export const CATEGORY_ORDER: Category[] = [
-  "GLP / Metabolic",
-  "Tissue & Repair",
-  "Secretagogues",
-  "Cognitive",
-  "Longevity",
-  "Copper",
-  "Supplies",
+  "GLP-1 / Incretin",
+  "Tissue Repair",
+  "GH Secretagogues",
+  "Nootropic & Neuropeptide",
+  "Melanocortin",
+  "Mitochondrial & Longevity",
+  "Copper Peptides",
+  "Research Supplies",
 ];
 
 export const STATUS_LABEL: Record<Status, string> = {
@@ -82,6 +83,30 @@ export const STATUS_LABEL: Record<Status, string> = {
   low: "Low stock",
   "pre-order": "Pre-order",
   retired: "Retired",
+};
+
+// Per-product review summary shown on catalogue cards (keyed by catalogue no).
+// Counts for the lines published on the reference homepage are real; the rest
+// are placeholders for this design build. Ratings sit at 5★ across the range.
+export const PRODUCT_RATINGS: Record<string, { rating: number; reviews: number }> = {
+  "DR-002": { rating: 5, reviews: 8 },
+  "DR-004": { rating: 5, reviews: 11 },
+  "DR-007": { rating: 5, reviews: 7 },
+  "DR-008": { rating: 5, reviews: 5 },
+  "DR-009": { rating: 5, reviews: 9 },
+  "DR-011": { rating: 5, reviews: 12 },
+  "DR-012": { rating: 5, reviews: 6 },
+  "DR-013": { rating: 5, reviews: 0 },
+  "DR-015": { rating: 5, reviews: 5 },
+  "DR-016": { rating: 5, reviews: 4 },
+  "DR-018": { rating: 5, reviews: 6 },
+  "DR-019": { rating: 5, reviews: 14 },
+  "DR-020": { rating: 5, reviews: 5 },
+  "DR-021": { rating: 5, reviews: 7 },
+  "DR-024": { rating: 5, reviews: 9 },
+  "DR-025": { rating: 5, reviews: 4 },
+  "DR-031": { rating: 5, reviews: 22 },
+  "DR-032": { rating: 5, reviews: 0 },
 };
 
 // ── Certificate of Analysis library ──────────────────────────────────────

@@ -4,8 +4,8 @@ import { slugify } from "@/lib/data";
 // across the range (brand consistency, like the reference vials); only the
 // powder in the vial changes — Copper peptides are famously blue.
 const POWDER: Record<string, { top: string; body: string }> = {
-  Copper: { top: "#7ec8f0", body: "#2f7fc0" },
-  Supplies: { top: "#e8f0f4", body: "#aebfc8" },
+  "Copper Peptides": { top: "#7ec8f0", body: "#2f7fc0" },
+  "Research Supplies": { top: "#e8f0f4", body: "#aebfc8" },
   default: { top: "#efe9da", body: "#cbbfa3" },
 };
 

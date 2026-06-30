@@ -5,10 +5,10 @@ const COLUMNS: { head: string; links: { label: string; href: string }[] }[] = [
   {
     head: "Catalogue",
     links: [
-      { label: "All reagents", href: "/shop" },
-      { label: "GLP / metabolic", href: "/shop#glp-metabolic" },
-      { label: "Tissue & repair", href: "/shop#tissue-repair" },
-      { label: "Supplies", href: "/shop#supplies" },
+      { label: "All research peptides", href: "/shop" },
+      { label: "GLP-1 / Incretin", href: "/shop#glp-1-incretin" },
+      { label: "Tissue Repair", href: "/shop#tissue-repair" },
+      { label: "Research Supplies", href: "/shop#research-supplies" },
     ],
   },
   {

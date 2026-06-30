@@ -5,7 +5,7 @@ const CHIPS: { label: string; d: string }[] = [
   { label: "Third-party COA", d: "M8 4h8v3H8z M6 5H4v15h16V5h-2 M8.5 13l2.2 2.2 4.3-4.3" },
   { label: "WA dispatch", d: "M3 6h11v9H3z M14 9h4l3 3v3h-7 M7.5 18.5a1.6 1.6 0 1 0 0-.01 M17 18.5a1.6 1.6 0 1 0 0-.01" },
   { label: "Research-only", d: "M9 3h6 M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3" },
-  { label: "Secure checkout", d: "M6 10V8a6 6 0 0 1 12 0v2 M5 10h14v11H5z" },
+  { label: "Secure account checkout", d: "M6 10V8a6 6 0 0 1 12 0v2 M5 10h14v11H5z" },
 ];
 
 export function ShopHero({

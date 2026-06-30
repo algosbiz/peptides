@@ -57,10 +57,18 @@ export function ProductGrid({ products }: { products: Product[] }) {
     <div>
       {/* control strip */}
       <div className="ruled flex flex-col gap-4 rounded-card bg-paper-2/60 p-4 backdrop-blur-sm lg:flex-row lg:items-center lg:justify-between">
-        <p className="datum text-sm text-ink-2">
-          Showing <span className="text-ink">{visible.length}</span> of{" "}
-          {products.length} reagents
-        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <p className="datum text-sm text-ink-2">
+            Showing <span className="text-ink">{visible.length}</span> of{" "}
+            {products.length} reagents
+          </p>
+          <span className="datum inline-flex items-center gap-1.5 rounded-full border border-lime/30 bg-lime/10 px-3 py-1 text-xs font-medium text-lime">
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M3 6h11v9H3z M14 9h4l3 3v3h-7 M7.5 18.5a1.6 1.6 0 1 0 0-.01 M17 18.5a1.6 1.6 0 1 0 0-.01" />
+            </svg>
+            Free express shipping over $200
+          </span>
+        </div>
 
         <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
           <label className="relative flex-1 sm:max-w-xs">

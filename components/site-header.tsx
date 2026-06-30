@@ -65,9 +65,16 @@ export function SiteHeader() {
                   <span className="text-[0.6em] transition-transform group-hover:rotate-180">▼</span>
                 </Link>
                 {/* dropdown */}
-                <div className="invisible absolute left-1/2 top-full z-50 w-[420px] -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div className="invisible absolute left-0 top-full z-50 w-[340px] pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                   <div className="ruled bg-paper-2 p-2 shadow-2xl shadow-black/40">
-                    <div className="grid grid-cols-2 gap-1">
+                    {/* All — highlighted, at the top */}
+                    <Link
+                      href="/shop"
+                      className="datum block rounded-sm bg-paper-3 px-3 py-3 text-sm font-medium text-ink transition-colors hover:text-lime"
+                    >
+                      All research peptides
+                    </Link>
+                    <div className="mt-1 flex flex-col border-t border-line pt-1">
                       {CATEGORY_ORDER.map((c) => (
                         <Link
                           key={c}
@@ -78,12 +85,6 @@ export function SiteHeader() {
                         </Link>
                       ))}
                     </div>
-                    <Link
-                      href="/shop"
-                      className="datum mt-1 flex items-center justify-between border-t border-line px-3 py-2.5 text-sm text-lime"
-                    >
-                      All reagents <span aria-hidden>→</span>
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -166,7 +167,14 @@ export function SiteHeader() {
                   )}
                 </div>
                 {item.href === "/shop" && shopOpen && (
-                  <div className="grid grid-cols-2 gap-1 pb-3">
+                  <div className="flex flex-col pb-3">
+                    <Link
+                      href="/shop"
+                      onClick={() => setOpen(false)}
+                      className="datum py-2 text-sm font-medium text-lime"
+                    >
+                      All research peptides
+                    </Link>
                     {CATEGORY_ORDER.map((c) => (
                       <Link
                         key={c}
