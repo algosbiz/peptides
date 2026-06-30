@@ -84,7 +84,7 @@ export function ProductCard({ product: p }: { product: Product }) {
             </Link>
             <button
               type="button"
-              className="datum inline-flex items-center gap-1.5 rounded-full bg-lime px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-onlime transition-opacity hover:opacity-90"
+              className="datum hidden items-center gap-1.5 rounded-full bg-lime px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-onlime transition-opacity hover:opacity-90 group-hover:inline-flex group-focus-within:inline-flex"
             >
               <span aria-hidden>+</span> Add
             </button>
