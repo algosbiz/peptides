@@ -7,7 +7,11 @@ export function ProductCard({ product: p }: { product: Product }) {
   const review = PRODUCT_RATINGS[p.no];
 
   return (
-    <article className="group ruled relative flex flex-col overflow-hidden rounded-card bg-paper-2 transition-colors duration-300 hover:border-line-2">
+    <article className="group ruled relative flex flex-col overflow-hidden rounded-[22px] bg-[#0d131c] transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-lime/60 hover:shadow-[0_18px_60px_-25px_color-mix(in_oklch,var(--color-lime)_38%,transparent)]">
+      <span
+        className="absolute left-0 top-0 z-20 h-[2px] w-[28%] bg-lime transition-[width] duration-500 group-hover:w-full"
+        aria-hidden="true"
+      />
       {/* media */}
       <div className="relative overflow-hidden border-b border-line bg-paper-3">
         <div
@@ -23,7 +27,7 @@ export function ProductCard({ product: p }: { product: Product }) {
           format={p.format}
           purity={p.purity}
           category={p.category}
-          className="relative mx-auto h-52 w-auto transition-transform duration-500 group-hover:-translate-y-1 sm:h-56"
+          className="relative mx-auto h-72 w-auto transition-transform duration-500 group-hover:-translate-y-2 sm:h-80"
         />
 
         {/* COA badge */}

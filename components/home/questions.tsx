@@ -1,42 +1,57 @@
 import Link from "next/link";
 import { FAQ } from "@/lib/data";
-import { SectionIndex } from "@/components/ui";
 
-const TEASER = [FAQ[0].items[0], FAQ[1].items[0], FAQ[2].items[0]];
+const ITEMS = FAQ.flatMap((group) => group.items).slice(0, 6);
 
 export function Questions() {
   return (
-    <section className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
-      <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-        <div className="lg:col-span-4">
-          <SectionIndex n={7} total={7}>
-            FAQ
-          </SectionIndex>
-          <h2 className="font-display mt-5 text-[clamp(1.9rem,4vw,3rem)] font-bold leading-[1.04] tracking-tight text-ink">
-            Before you spend, <span className="mark">the honest answers.</span>
-          </h2>
-          <Link
-            href="/faq"
-            className="datum group mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 text-sm font-medium text-ink"
-          >
-            All questions
-            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </Link>
+    <section className="bg-[#06090e]">
+      <div className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
+        <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
+          <div>
+            <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
+              FAQ
+            </p>
+            <h2 className="font-display mt-4 text-[clamp(2.5rem,6vw,4.2rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.05em]">
+              Before you <span className="text-lime">ask.</span>
+            </h2>
+          </div>
+          <p className="text-base leading-7 text-ink-2 sm:text-lg">
+            The questions research buyers ask most—answered directly. Support is
+            available if you still need help.
+          </p>
         </div>
 
-        <dl className="lg:col-span-8">
-          {TEASER.map((item) => (
-            <div
+        <div className="mt-12 max-w-4xl space-y-3">
+          {ITEMS.map((item, index) => (
+            <details
               key={item.q}
-              className="grid gap-3 border-t border-line py-7 first:border-t-0 first:pt-0 sm:grid-cols-12 sm:gap-6"
+              open={index === 0}
+              className="smooth-details group rounded-2xl border border-line bg-[#0d131c] open:border-lime/40"
             >
-              <dt className="font-display text-xl leading-snug text-ink sm:col-span-5">
-                {item.q}
-              </dt>
-              <dd className="text-ink-2 sm:col-span-7">{item.a}</dd>
-            </div>
+              <summary className="flex cursor-pointer list-none items-center gap-5 px-6 py-5">
+                <span className="font-display flex-1 font-bold">{item.q}</span>
+                <span className="text-xl text-lime transition-transform duration-300 group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="max-w-3xl px-6 pb-6 text-sm leading-7 text-ink-2">
+                {item.a}
+              </p>
+            </details>
           ))}
-        </dl>
+          <div className="flex flex-col gap-4 rounded-2xl border border-lime/30 bg-lime/5 p-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-semibold">
+              Still have a question? Our team usually replies within one business day.
+            </p>
+            <Link
+              href="/support"
+              className="datum shrink-0 rounded-full bg-lime px-6 py-3 text-xs font-semibold uppercase tracking-wider text-onlime"
+            >
+              Contact support →
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

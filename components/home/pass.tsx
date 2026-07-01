@@ -1,106 +1,92 @@
 import Link from "next/link";
-import { SectionIndex } from "@/components/ui";
 
-const LEDGER = [
-  { date: "2026-06-04", desc: "Order RT-2604 · Retatrutide", amt: "+9.45" },
-  { date: "2026-05-22", desc: "Order BP-2622 · BPC-157 ×2", amt: "+6.40" },
-  { date: "2026-05-09", desc: "Birthday credit", amt: "+25.00" },
-  { date: "2026-05-01", desc: "Monthly pass", amt: "−14.95" },
-  { date: "2026-04-18", desc: "Order GC-2640 · GHK-Cu", amt: "+7.60" },
-];
-
-const COMPARE: { feature: string; free: boolean; pass: boolean }[] = [
-  { feature: "COA vault tied to every order", free: true, pass: true },
-  { feature: "8% of spend back as credit", free: false, pass: true },
-  { feature: "Free express, no $200 floor", free: false, pass: true },
-  { feature: "Restock notice 24h early", free: false, pass: true },
+const BENEFITS = [
+  "1–5% back in store credit on every order, by tier",
+  "Shipping protection included on every parcel",
+  "$10–$50 birthday credit and priority support",
+  "Double-credit weekends on eligible products",
 ];
 
 export function Pass() {
   return (
-    <section className="border-y border-line bg-paper-2">
+    <section className="bg-[#06090e]">
       <div className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* ledger panel — left, to flip the hero's asymmetry */}
-          <div className="lg:col-span-6">
-            <div className="ruled bg-paper">
-              {/* membership card mock */}
-              <div className="bg-forest p-5 text-on-forest">
-                <div className="flex items-start justify-between">
-                  <span className="label text-on-forest-2!">Elite Pass</span>
-                  <span className="datum text-xs text-lime">ACTIVE</span>
-                </div>
-                <p className="datum mt-8 text-lg tracking-[0.2em] text-on-forest">
-                  •••• 4019
-                </p>
-                <div className="mt-4 flex items-end justify-between">
-                  <span className="label text-on-forest-2!">Member since 2024</span>
-                  <span className="datum text-sm text-on-forest">Bal. $61.30</span>
-                </div>
-              </div>
-
-              {/* statement rows */}
-              <table className="w-full text-sm">
-                <tbody>
-                  {LEDGER.map((row) => (
-                    <tr key={row.date} className="border-b border-line last:border-0">
-                      <td className="datum px-5 py-3 text-xs text-ink-3">{row.date}</td>
-                      <td className="px-2 py-3 text-ink-2">{row.desc}</td>
-                      <td
-                        className={`datum px-5 py-3 text-right ${
-                          row.amt.startsWith("−") ? "text-ink-3" : "text-lime"
-                        }`}
-                      >
-                        {row.amt}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          {/* pitch — right */}
-          <div className="lg:col-span-6">
-            <SectionIndex n={4} total={7}>
-              Elite Pass
-            </SectionIndex>
-            <h2 className="font-display mt-5 text-[clamp(1.9rem,4vw,3rem)] font-bold leading-[1.05] tracking-tight text-ink">
-              A free account keeps your paperwork. The Pass{" "}
-              <span className="mark">keeps a balance.</span>
-            </h2>
-            <p className="mt-5 max-w-md text-ink-2">
-              Every account stores your certificates and order history at no cost.
-              For $14.95 a month, the Pass turns each order into store credit you
-              spend on the next one — built for benches that reorder, not for
-              one-off buyers.
-            </p>
-
-            <ul className="mt-8 max-w-md">
-              {COMPARE.map((c) => (
-                <li
-                  key={c.feature}
-                  className="flex items-center justify-between gap-4 border-b border-line py-3"
+        <div className="relative overflow-hidden rounded-[28px] border border-lime/30 bg-[#0d131c] p-7 sm:p-10 lg:p-12">
+          <div
+            className="absolute inset-0 bg-[radial-gradient(circle_at_24%_0%,color-mix(in_oklch,var(--color-lime)_14%,transparent),transparent_34%)]"
+            aria-hidden="true"
+          />
+          <div className="relative grid items-center gap-12 lg:grid-cols-[1.25fr_0.75fr]">
+            <div>
+              <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
+                Membership · the upgrade
+              </p>
+              <h2 className="font-display mt-4 max-w-2xl text-[clamp(2.4rem,5vw,3.7rem)] font-extrabold uppercase leading-[0.95] tracking-[-0.05em]">
+                Every order <span className="text-lime">pays you back.</span>
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-ink-2">
+                A free account covers the essentials. Elite Pass turns repeat
+                orders into store credit and includes dispatch protection.
+              </p>
+              <ul className="mt-7 space-y-4">
+                {BENEFITS.map((benefit) => (
+                  <li key={benefit} className="flex gap-3 text-sm text-ink-2">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-md bg-lime/15 font-bold text-lime">
+                      ✓
+                    </span>
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap items-center gap-5">
+                <Link
+                  href="/shop"
+                  className="datum rounded-full bg-lime px-7 py-4 text-xs font-semibold uppercase tracking-wider text-onlime"
                 >
-                  <span className="text-sm text-ink">{c.feature}</span>
-                  <span className="datum flex shrink-0 items-center gap-6 text-xs">
-                    <span className={c.free ? "text-lime" : "text-ink-3"}>
-                      {c.free ? "Free ✓" : "Free —"}
-                    </span>
-                    <span className={c.pass ? "text-lime" : "text-ink-3"}>
-                      {c.pass ? "Pass ✓" : "Pass —"}
-                    </span>
-                  </span>
-                </li>
-              ))}
-            </ul>
+                  Join Elite Pass →
+                </Link>
+                <span className="datum text-xs text-ink-2">
+                  $14.95/mo · cancel anytime
+                </span>
+              </div>
+              <dl className="mt-8 flex flex-wrap gap-10">
+                {[
+                  ["5%", "Top earn rate"],
+                  ["$50", "Max birthday credit"],
+                  ["3", "Membership tiers"],
+                ].map(([value, label]) => (
+                  <div key={label}>
+                    <dd className="font-display text-2xl font-extrabold text-lime">
+                      {value}
+                    </dd>
+                    <dt className="datum mt-1 text-[0.6rem] uppercase tracking-wider text-ink-3">
+                      {label}
+                    </dt>
+                  </div>
+                ))}
+              </dl>
+            </div>
 
-            <Link
-              href="/shop"
-              className="ul-link mt-8 inline-block text-sm font-medium text-ink"
-            >
-              Start with a free account →
-            </Link>
+            <div className="mx-auto w-full max-w-[430px] rounded-[24px] border border-lime/35 bg-[linear-gradient(135deg,#172116,#090d0a)] p-7 shadow-[0_28px_80px_-35px_var(--color-lime)]">
+              <div className="flex items-start justify-between">
+                <span className="font-display text-xl font-extrabold uppercase">
+                  Elite <span className="text-lime">Pass</span>
+                </span>
+                <span className="datum rounded-full bg-[#d8b44a] px-3 py-1 text-[0.55rem] font-semibold uppercase tracking-wider text-[#171306]">
+                  Gold member
+                </span>
+              </div>
+              <div className="mt-12 h-8 w-12 rounded-lg bg-lime" />
+              <p className="font-display mt-10 text-4xl font-extrabold text-lime">
+                5%
+              </p>
+              <p className="datum text-[0.62rem] font-semibold uppercase tracking-wider text-ink-2">
+                Store credit on every order
+              </p>
+              <p className="datum mt-10 text-[0.62rem] uppercase tracking-wider text-ink-3">
+                Your name here
+              </p>
+            </div>
           </div>
         </div>
       </div>

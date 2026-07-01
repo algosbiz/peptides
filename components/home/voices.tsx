@@ -1,49 +1,49 @@
 import { REVIEWS } from "@/lib/data";
-import { SectionIndex } from "@/components/ui";
 
 export function Voices() {
-  const [lead, ...rest] = REVIEWS;
-
   return (
-    <section className="border-y border-line bg-paper-2">
+    <section id="reviews" className="scroll-mt-28 border-y border-line bg-[#080c12]">
       <div className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
-        <div className="flex flex-wrap items-end justify-between gap-6">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <SectionIndex n={6} total={7}>
+            <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
               Verified reviews
-            </SectionIndex>
-            <h2 className="font-display mt-4 text-[clamp(1.7rem,3.6vw,2.6rem)] tracking-tight text-ink">
-              What benches say, once they&apos;ve measured it themselves.
+            </p>
+            <h2 className="font-display mt-4 text-[clamp(2.5rem,6vw,4.2rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.05em]">
+              Recent buyer <span className="text-lime">feedback.</span>
             </h2>
           </div>
-          <p className="datum text-sm text-ink-2">
-            <span className="text-2xl text-ink">4.9</span> / 5 · 1,184 verified
-          </p>
+          <div>
+            <p className="font-display text-5xl font-extrabold">
+              4.9 <span className="text-xl tracking-widest text-lime">★★★★★</span>
+            </p>
+            <p className="datum mt-2 text-xs text-ink-3">
+              From verified buyers · no incentives
+            </p>
+          </div>
         </div>
 
-        <figure className="mt-12 max-w-4xl">
-          <blockquote className="font-display text-[clamp(1.6rem,3.6vw,2.8rem)] leading-[1.2] tracking-tight text-ink">
-            “{lead.body}”
-          </blockquote>
-          <figcaption className="datum mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-ink-2">
-            <span className="text-ink">{lead.handle}</span>
-            <span className="opacity-40">·</span>
-            <span>{lead.context}</span>
-            <span className="opacity-40">·</span>
-            <span className="text-lime">{lead.rating.toFixed(1)} / 5</span>
-          </figcaption>
-        </figure>
-
-        <div className="mt-14 grid gap-px sm:grid-cols-2">
-          {rest.map((r) => (
-            <div key={r.handle} className="border-t border-line pt-6 sm:pr-10">
-              <p className="datum flex items-center gap-3 text-sm">
-                <span className="text-lime">{r.rating.toFixed(1)} / 5</span>
-                <span className="text-ink-3">{r.context}</span>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {REVIEWS.map((review) => (
+            <article
+              key={review.handle}
+              className="group relative rounded-[20px] border border-line bg-[#0d131c] p-6 transition-[border-color,transform,box-shadow] hover:-translate-y-1 hover:border-lime/50 hover:shadow-[0_18px_50px_-30px_var(--color-lime)]"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="tracking-widest text-lime">★★★★★</span>
+                <span className="datum text-[0.62rem] uppercase tracking-wider text-ink-3">
+                  {review.context}
+                </span>
+              </div>
+              <blockquote className="mt-6 border-l-4 border-[#06090e] pl-5 text-base leading-7 text-ink">
+                “{review.body}”
+              </blockquote>
+              <p className="datum mt-6 text-xs text-ink-2">
+                <span className="font-semibold uppercase text-lime">✓ Verified</span>
+                <span className="mx-2">·</span>
+                {review.handle}
               </p>
-              <p className="mt-3 leading-relaxed text-ink-2">“{r.body}”</p>
-              <p className="datum mt-4 text-sm text-ink">{r.handle}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>

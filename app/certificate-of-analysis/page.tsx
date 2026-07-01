@@ -1,195 +1,229 @@
 import type { Metadata } from "next";
-import { HplcTrace } from "@/components/hplc-trace";
-import { COAS, METHOD } from "@/lib/data";
+import { CoaLibrary } from "@/components/coa/coa-library";
+import { COAS } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Certificate of Analysis",
+  title: "Certificate of Analysis Library",
   description:
-    "Every batch is independently assayed by HPLC and LC-MS before it ships. Read the method, browse the batch library, and see the batches we retired.",
+    "Browse Elite Biotech batch certificates. Every listed batch is independently assayed and matched to its published laboratory record.",
 };
 
-const RETIRED = [
-  { batch: "BP-2598", compound: "BPC-157", assayed: "2026-03-02", purity: 96.1, reason: "Below 98% purity floor" },
-  { batch: "TS-2571", compound: "Tesamorelin", assayed: "2026-02-14", purity: 97.4, reason: "Identity peak ambiguous on LC-MS" },
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
 ];
 
-const SAMPLE_PROPS: [string, string][] = [
-  ["Appearance", "White lyophilised powder"],
-  ["Purity (HPLC, area %)", "99.6%"],
-  ["Identity (LC-MS)", "Confirmed"],
-  ["Mass found / calculated", "340.8 / 340.9 Da"],
-  ["Retention time", "0.62 (normalised)"],
-  ["Water content (KF)", "2.1%"],
-  ["Net peptide fill", "50 mg"],
-  ["Recommended storage", "−20 °C, desiccated"],
+function prettyDate(iso: string) {
+  const [year, month, day] = iso.split("-").map(Number);
+  return `${day} ${MONTHS[month - 1]} ${year}`;
+}
+
+const CHAIN = [
+  {
+    step: "01",
+    title: "Batch sampled",
+    body: "A sealed sample is pulled from every production lot before it leaves quarantine and is logged against its batch reference.",
+  },
+  {
+    step: "02",
+    title: "Independent testing",
+    body: "The sample is sent to an independent analytical laboratory for HPLC purity testing and, where listed, LC-MS identity confirmation.",
+  },
+  {
+    step: "03",
+    title: "Certificate issued",
+    body: "The result is recorded as a dated certificate tied to the exact batch, then published in this searchable library.",
+  },
+  {
+    step: "04",
+    title: "Matched to your order",
+    body: "The batch reference supplied with an order maps back to its own report, preserving a clear documentation trail.",
+  },
 ];
+
+function ShieldIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-5 w-5"
+      aria-hidden="true"
+    >
+      <path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6z" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+  );
+}
 
 export default function CoaPage() {
-  const sample = COAS.find((c) => c.batch === "GC-2640")!;
+  const latest = COAS.reduce((current, coa) =>
+    coa.assayed > current.assayed ? coa : current,
+  );
 
   return (
-    <div className="mx-auto max-w-310 px-5">
-      {/* header */}
-      <header className="grid gap-8 border-b border-line py-16 lg:grid-cols-12 lg:py-20">
-        <div className="lg:col-span-8">
-          <p className="label">Quality · every batch, no exceptions</p>
-          <h1 className="font-display mt-5 text-[clamp(2.4rem,6vw,4.2rem)] leading-[0.98] tracking-tight text-ink">
-            We publish the numbers,
-            <br />
-            including the ones we&apos;d rather hide.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-ink-2">
-            A certificate you can&apos;t verify is decoration. Below is a real
-            sample certificate, the method that produced it, the full batch
-            library, and — because honesty is only honesty when it costs
-            something — the batches that failed and never shipped.
-          </p>
-        </div>
-      </header>
+    <div className="coa-grid -mb-24 bg-[#06090e] pb-24 text-ink">
+      <section className="relative border-b border-line">
+        <div
+          className="absolute inset-0 bg-[radial-gradient(circle_at_76%_18%,color-mix(in_oklch,var(--color-lime)_12%,transparent),transparent_34%)]"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto grid max-w-[1240px] gap-12 px-5 py-20 lg:grid-cols-[1.45fr_0.95fr] lg:items-center lg:py-28">
+          <div>
+            <p className="datum flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-lime">
+              <span className="h-2 w-2 rounded-full bg-lime shadow-[0_0_10px_var(--color-lime)]" />
+              Third-party verified
+            </p>
+            <h1 className="font-display mt-5 max-w-[800px] text-[clamp(3rem,7vw,5.3rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.055em]">
+              Certificate of analysis{" "}
+              <span className="text-lime">library.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-ink-2 sm:text-lg">
+              Browse current Elite Biotech batch documentation. Every visible
+              record maps a listed batch to its independent analytical result.
+            </p>
 
-      {/* sample certificate */}
-      <section className="py-16">
-        <div className="ruled bg-paper-2">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-6 py-4">
-            <span className="label">Certificate of Analysis · sample</span>
-            <span className="datum text-xs text-ink-2">Report DR-COA-{sample.batch.replace(/\D/g, "")}</span>
+            <div className="datum mt-8 flex flex-wrap gap-3 text-[0.65rem] font-semibold uppercase tracking-wider text-ink-2">
+              <span className="rounded-full border border-lime/30 bg-[#080d14]/80 px-4 py-2">
+                Independent laboratory reporting
+              </span>
+              <span className="rounded-full border border-lime/30 bg-[#080d14]/80 px-4 py-2">
+                Current live batches
+              </span>
+              <span className="rounded-full border border-lime/30 bg-[#080d14]/80 px-4 py-2">
+                HPLC &amp; LC-MS where listed
+              </span>
+            </div>
           </div>
 
-          <div className="grid gap-0 lg:grid-cols-12">
-            {/* left: identity + trace */}
-            <div className="border-line p-6 lg:col-span-7 lg:border-r">
-              <div className="flex items-baseline justify-between gap-4">
-                <div>
-                  <p className="datum text-sm text-ink-2">{sample.batch}</p>
-                  <h2 className="font-display text-3xl tracking-tight text-ink">{sample.compound}</h2>
-                </div>
-                <div className="text-right">
-                  <p className="datum text-4xl font-medium text-ink">
-                    {sample.purity}
-                    <span className="text-lg text-ink-2">%</span>
-                  </p>
-                  <p className="label mt-1">Area purity</p>
-                </div>
+          <aside className="relative overflow-hidden rounded-[28px] border border-lime/35 bg-[#0b121a] p-6 shadow-[0_20px_80px_-45px_color-mix(in_oklch,var(--color-lime)_35%,transparent)] sm:p-9">
+            <div
+              className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--color-lime),transparent)]"
+              aria-hidden="true"
+            />
+            <dl className="overflow-hidden rounded-2xl border border-line bg-[#080d14]">
+              <div className="flex items-center justify-between gap-5 border-b border-line px-5 py-5">
+                <dt className="datum text-xs font-semibold uppercase tracking-wider text-ink-3">
+                  Live certificates
+                </dt>
+                <dd className="datum text-3xl font-semibold text-lime">
+                  {COAS.length}
+                </dd>
               </div>
-
-              <div className="mt-6 text-lime">
-                <HplcTrace className="h-48 w-full sm:h-56" label={`${sample.purity}% area`} />
+              <div className="flex items-center justify-between gap-5 border-b border-line px-5 py-5">
+                <dt className="datum text-xs font-semibold uppercase tracking-wider text-ink-3">
+                  Laboratory
+                </dt>
+                <dd className="text-right">
+                  <span className="font-display block font-bold">Independent</span>
+                  <span className="datum text-[0.65rem] uppercase tracking-wider text-ink-3">
+                    HPLC · LC-MS
+                  </span>
+                </dd>
               </div>
-              <p className="datum mt-2 flex justify-between text-xs text-ink-3">
-                <span>Detector: UV 214 nm</span>
-                <span>Column: C18, 2.1 × 100 mm</span>
-                <span>Assayed {sample.assayed}</span>
+              <div className="flex items-center justify-between gap-5 px-5 py-5">
+                <dt className="datum text-xs font-semibold uppercase tracking-wider text-ink-3">
+                  Last updated
+                </dt>
+                <dd className="font-display text-lg font-bold">
+                  {prettyDate(latest.assayed)}
+                </dd>
+              </div>
+            </dl>
+            <div className="mt-6 flex gap-4 text-sm leading-6 text-ink-2">
+              <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-lime/30 bg-lime/10 text-lime">
+                <ShieldIcon />
+              </span>
+              <p>
+                Each card maps one batch to its current certificate and
+                analytical data.
               </p>
             </div>
+          </aside>
+        </div>
 
-            {/* right: property table */}
-            <dl className="lg:col-span-5">
-              {SAMPLE_PROPS.map(([k, v], i) => (
-                <div
-                  key={k}
-                  className={`flex items-center justify-between gap-4 px-6 py-3 ${
-                    i !== 0 ? "border-t border-line" : ""
-                  }`}
-                >
-                  <dt className="text-sm text-ink-2">{k}</dt>
-                  <dd className="datum text-sm text-ink">{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+        <div
+          className="absolute inset-x-0 bottom-0 h-px bg-[linear-gradient(90deg,transparent_0%,var(--color-lime)_18%,var(--color-lime)_72%,transparent_100%)]"
+          aria-hidden="true"
+        />
+      </section>
 
-          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line px-6 py-4">
-            <p className="datum text-xs text-ink-3">
-              Analysed by an independent NATA-style analytical laboratory. Elite Biotech did not run this assay.
-            </p>
-            <span className="datum cursor-not-allowed text-xs text-ink-3 line-through">
-              Download PDF (in-account)
-            </span>
-          </div>
+      <section className="relative">
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-14 bg-[linear-gradient(180deg,var(--color-lime),transparent)] opacity-[0.07]"
+          style={{
+            maskImage:
+              "linear-gradient(90deg, transparent, black 18%, black 72%, transparent)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto max-w-[1240px] px-5 py-16 lg:py-20">
+          <CoaLibrary coas={COAS} />
         </div>
       </section>
 
-      {/* method */}
-      <section id="method" className="scroll-mt-28 border-t border-line py-16">
-        <h2 className="font-display text-[clamp(1.7rem,3.4vw,2.6rem)] tracking-tight text-ink">
-          How a batch earns its certificate
-        </h2>
-        <ol className="mt-10 grid gap-px sm:grid-cols-3">
-          {METHOD.map((m) => (
-            <li key={m.step} className="border-t border-line pt-6 sm:pr-8">
-              <div className="flex items-baseline gap-3">
-                <span className="datum text-sm text-lime">{m.step}</span>
-                <h3 className="font-display text-xl text-ink">{m.title}</h3>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-ink-2">{m.body}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* batch library */}
-      <section className="border-t border-line py-16">
-        <div className="flex items-baseline justify-between">
-          <h2 className="font-display text-[clamp(1.7rem,3.4vw,2.6rem)] tracking-tight text-ink">
-            Batch library
-          </h2>
-          <span className="label">{COAS.length} recent</span>
-        </div>
-
-        <div className="mt-8 grid grid-cols-[1fr_auto] gap-4 border-b border-line pb-2 sm:grid-cols-[6rem_1fr_7rem_6rem_5rem_4rem]">
-          <span className="label">Batch</span>
-          <span className="label">Compound</span>
-          <span className="label hidden sm:block">Assayed</span>
-          <span className="label hidden sm:block">Method</span>
-          <span className="label hidden text-right sm:block">Mass</span>
-          <span className="label text-right">Pure</span>
-        </div>
-        <ul>
-          {COAS.map((c) => (
-            <li
-              key={c.batch}
-              className="grid grid-cols-[1fr_auto] items-center gap-4 border-b border-line py-3.5 sm:grid-cols-[6rem_1fr_7rem_6rem_5rem_4rem]"
-            >
-              <span className="datum text-sm text-ink">{c.batch}</span>
-              <span className="text-sm text-ink-2">{c.compound}</span>
-              <span className="datum hidden text-sm text-ink-3 sm:block">{c.assayed}</span>
-              <span className="datum hidden text-xs text-ink-3 sm:block">{c.method}</span>
-              <span className="datum hidden text-right text-xs text-ink-3 sm:block">{c.massFound}</span>
-              <span className="datum text-right text-sm text-lime">{c.purity}%</span>
-            </li>
-          ))}
-        </ul>
-        <p className="datum mt-5 text-xs text-ink-3">
-          Full signed PDFs unlock under your account, filed against your orders.
-        </p>
-      </section>
-
-      {/* retired */}
-      <section id="retired" className="scroll-mt-28 border-t border-line py-16">
-        <div className="grid gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <h2 className="font-display text-[clamp(1.7rem,3.4vw,2.6rem)] leading-tight tracking-tight text-ink">
-              The receipts we left up.
-            </h2>
-            <p className="mt-4 max-w-sm text-ink-2">
-              These batches came back under spec. They never shipped — and we
-              keep them visible, because a quality claim with no failures behind
-              it isn&apos;t a claim, it&apos;s a slogan.
+      <section className="relative border-t border-line bg-[#080c12]/85">
+        <div className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
+          <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+            <div>
+              <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
+                How it works
+              </p>
+              <h2 className="font-display mt-4 max-w-3xl text-[clamp(2.5rem,6vw,4.2rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.05em]">
+                From batch to <span className="text-lime">your order.</span>
+              </h2>
+            </div>
+            <p className="max-w-xl text-base leading-7 text-ink-2 sm:text-lg">
+              Each lot follows the same documentation chain—sampled, tested,
+              recorded and matched to the batch it ships in.
             </p>
           </div>
-          <ul className="lg:col-span-8">
-            {RETIRED.map((r) => (
+
+          <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {CHAIN.map((item) => (
               <li
-                key={r.batch}
-                className="grid grid-cols-2 items-center gap-4 border-t border-line py-5 first:border-t-0 sm:grid-cols-[6rem_1fr_5rem_auto]"
+                key={item.step}
+                className="group relative overflow-hidden rounded-[22px] border border-line bg-[#0d131c] p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-lime/60 hover:shadow-[0_18px_50px_-30px_color-mix(in_oklch,var(--color-lime)_40%,transparent)]"
               >
-                <span className="datum text-sm text-ink-3">{r.batch}</span>
-                <span className="text-ink-2">{r.compound}</span>
-                <span className="datum text-clay">{r.purity}%</span>
-                <span className="datum text-right text-xs text-ink-3">{r.reason}</span>
+                <span
+                  className="absolute left-0 top-0 h-px w-1/4 bg-lime transition-[width] duration-500 group-hover:w-full"
+                  aria-hidden="true"
+                />
+                <span className="datum text-xl font-semibold text-lime">
+                  {item.step}
+                </span>
+                <h3 className="font-display mt-3 text-base font-extrabold uppercase">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-ink-2">{item.body}</p>
               </li>
             ))}
-          </ul>
+          </ol>
+
+          <div className="mt-10 flex gap-4 rounded-2xl border border-line bg-lime/5 p-6 text-sm leading-6 text-ink-2">
+            <span className="mt-0.5 shrink-0 text-lime">
+              <ShieldIcon />
+            </span>
+            <p>
+              <strong className="text-ink">Documentation and quality data only.</strong>{" "}
+              Certificates report identity, purity and analytical observations
+              for laboratory research. Products are not for human or veterinary
+              consumption. Research use only · 18+.
+            </p>
+          </div>
         </div>
       </section>
     </div>

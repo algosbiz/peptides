@@ -1,56 +1,40 @@
-import { SectionIndex } from "@/components/ui";
-
-const PRINCIPLES = [
-  {
-    n: "01",
-    head: "If it grades under spec, you never see it.",
-    body: "Below-threshold batches are retired before they reach the shelf. The guarantee isn't a refund — it's that the failure happened upstream of you.",
-  },
-  {
-    n: "02",
-    head: "Plain box. Honest fill weight.",
-    body: "The outer is unbranded and unremarkable. The inner vial holds what the label and the certificate both say it holds — weighed, not estimated.",
-  },
-  {
-    n: "03",
-    head: "Seven days to tell us it's wrong.",
-    body: "Cold-chain slip, short fill, cloudy reconstitution — email the lab with your order number inside a week and it's replaced. No argument, no restocking fee.",
-  },
+const PROTECTIONS = [
+  ["◇", "Purity guarantee", "≥99% by HPLC on qualifying listed batches"],
+  ["□", "Discreet packaging", "Plain, unbranded and tracked"],
+  ["▱", "Secure checkout", "Your account data stays protected"],
+  ["↻", "7-day support window", "Report incorrect or damaged items promptly"],
 ];
 
 export function Principles() {
   return (
-    <section className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
-      <div className="grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-4">
-          <SectionIndex n={5} total={7}>
-            Buyer protection
-          </SectionIndex>
-          <h2 className="font-display mt-5 text-[clamp(1.9rem,4vw,3rem)] font-bold leading-[1.04] tracking-tight text-ink">
-            Three promises, <span className="mark">written plainly.</span>
-          </h2>
-          <p className="mt-5 max-w-sm text-ink-2">
-            No badges, no rotating seal. Just the three things a research account
-            actually needs to hear before it spends.
+    <section className="bg-[#06090e]">
+      <div className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
+        <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
+          <div>
+            <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
+              Buyer protection
+            </p>
+            <h2 className="font-display mt-4 text-[clamp(2.6rem,6vw,4.2rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.05em]">
+              Every order, <span className="text-lime">covered.</span>
+            </h2>
+          </div>
+          <p className="text-base leading-7 text-ink-2 sm:text-lg">
+            From documentation to packaging and account security—the safeguards
+            included with every order.
           </p>
         </div>
-
-        <ol className="lg:col-span-8">
-          {PRINCIPLES.map((p) => (
-            <li
-              key={p.n}
-              className="grid grid-cols-[3rem_1fr] gap-5 border-t border-line py-8 first:border-t-0 first:pt-0 sm:grid-cols-[4rem_1fr] sm:gap-8"
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {PROTECTIONS.map(([icon, title, body]) => (
+            <article
+              key={title}
+              className="group relative overflow-hidden rounded-[20px] border border-line bg-[#0d131c] p-6 transition-[border-color,transform] hover:-translate-y-1 hover:border-lime/55"
             >
-              <span className="datum pt-1 text-lg text-ink-3">{p.n}</span>
-              <div>
-                <h3 className="font-display text-2xl leading-snug tracking-tight text-ink sm:text-3xl">
-                  {p.head}
-                </h3>
-                <p className="mt-3 max-w-xl text-ink-2">{p.body}</p>
-              </div>
-            </li>
+              <span className="text-3xl text-lime">{icon}</span>
+              <h3 className="font-display mt-5 font-extrabold uppercase">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-ink-2">{body}</p>
+            </article>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
   );

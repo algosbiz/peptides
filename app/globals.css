@@ -106,6 +106,17 @@
     color: var(--color-lime);
   }
 
+  /*
+    Accent type carries the same soft electric bloom used by the reference.
+    Em-based radii keep it restrained on labels and more visible on headlines.
+  */
+  :where(.text-lime, .mark) {
+    text-shadow:
+      0 0 0.22em color-mix(in oklch, var(--color-lime) 48%, transparent),
+      0 0 0.7em color-mix(in oklch, var(--color-lime) 34%, transparent),
+      0 0 1.65em color-mix(in oklch, var(--color-lime) 22%, transparent);
+  }
+
   .ruled {
     border: 1px solid var(--color-line);
   }
@@ -140,6 +151,13 @@
         transparent 60%
       );
   }
+
+  .coa-grid {
+    background-image:
+      linear-gradient(oklch(1 0 0 / 0.028) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(1 0 0 / 0.028) 1px, transparent 1px);
+    background-size: 106px 106px;
+  }
 }
 
 @keyframes marquee {
@@ -151,11 +169,52 @@
   }
 }
 
+@keyframes modal-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.smooth-details {
+  interpolate-size: allow-keywords;
+}
+
+.smooth-details > summary::marker,
+.smooth-details > summary::-webkit-details-marker {
+  display: none;
+  content: "";
+}
+
+@supports selector(details::details-content) {
+  .smooth-details::details-content {
+    block-size: 0;
+    overflow: clip;
+    opacity: 0;
+    transition:
+      block-size 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 220ms ease,
+      content-visibility 320ms allow-discrete;
+  }
+
+  .smooth-details[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
   .marquee {
     animation: none;
+  }
+  .smooth-details::details-content {
+    transition: none;
   }
 }

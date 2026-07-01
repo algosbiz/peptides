@@ -1,20 +1,16 @@
 const ITEMS = [
-  "RT-2604 · 99.3%",
-  "HPLC + LC-MS on every batch",
-  "GC-2640 · 99.6%",
-  "AusPost tracked, plain outer",
-  "TZ-2611 · 99.4%",
-  "Free express over $200",
-  "AM-2627 · 99.5%",
-  "Afterpay · Klarna",
-  "Under-spec batches don't ship",
-  "Dispatched from WA",
+  "Secure checkout",
+  "Tracked WA dispatch",
+  "99% tested purity",
+  "Discreet packaging",
+  "Afterpay & Klarna",
+  "18+ research use only",
 ];
 
 export function Ticker() {
   return (
     <section
-      className="overflow-hidden border-b border-line bg-paper-2 py-3"
+      className="overflow-hidden border-y border-line bg-[#080c12] py-4"
       aria-label="Live batch and dispatch facts"
     >
       <div className="marquee">
@@ -27,9 +23,9 @@ export function Ticker() {
             {ITEMS.map((item) => (
               <li
                 key={item}
-                className="datum flex items-center gap-6 whitespace-nowrap px-6 text-sm text-ink-2"
+                className="datum flex items-center gap-6 whitespace-nowrap px-8 text-xs font-semibold uppercase tracking-[0.12em] text-ink-2"
               >
-                <span className="h-1 w-1 shrink-0 bg-lime" aria-hidden />
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-lime" aria-hidden />
                 {item}
               </li>
             ))}

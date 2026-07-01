@@ -1,97 +1,159 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import researchHero from "@/public/support-hero.png";
 
 export const metadata: Metadata = {
-  title: "Research",
+  title: "Research overviews",
   description:
-    "Plain reference notes on the reagent classes we stock — chemistry and classification only. For laboratory and research use. 18+.",
+    "Plain-English overviews of research compounds, their scientific classification and the pathways studied in published literature.",
 };
 
-const NOTES = [
+const OVERVIEWS = [
   {
-    no: "R-01",
+    category: "GLP-1 / Incretin",
     title: "What is Retatrutide?",
-    cls: "GLP / metabolic · triple-receptor agonist",
-    body: "A synthetic peptide investigated in the laboratory as a multi-receptor agonist. We stock it as a lyophilised reference reagent; the science here is purely structural.",
+    body: "An investigational GIP, GLP-1 and glucagon triple-receptor agonist represented in metabolic and receptor-mechanism research.",
+    href: "/research/retatrutide",
   },
   {
-    no: "R-02",
+    category: "Tissue Repair",
     title: "What is BPC-157?",
-    cls: "Tissue & repair · pentadecapeptide",
-    body: "A 15-amino-acid sequence derived from a gastric protein, widely used as a reference compound in in-vitro tissue research. Supplied lyophilised, assayed per batch.",
+    body: "A synthetic 15-amino-acid pentadecapeptide represented in preclinical tissue-repair and angiogenesis research.",
+    href: "/research/bpc-157",
   },
   {
-    no: "R-03",
-    title: "What is GHK-Cu?",
-    cls: "Copper · tripeptide-copper complex",
-    body: "A copper-bound tripeptide — the blue one. A common reference standard in dermatological and matrix research. We fill it at 50 mg and assay every lot.",
+    category: "GH Secretagogues",
+    title: "What is CJC-1295 + Ipamorelin?",
+    body: "A GHRH analogue paired with a selective secretagogue, studied in growth-hormone and IGF-1 signalling research.",
+    href: "/research/cjc-1295-ipamorelin",
   },
   {
-    no: "R-04",
+    category: "Mitochondrial",
     title: "What is MOTS-c?",
-    cls: "Longevity · mitochondrial-derived peptide",
-    body: "A short peptide encoded in mitochondrial DNA, studied as a reference in metabolic and mitochondrial laboratory work. Identity confirmed by LC-MS on each batch.",
+    body: "A mitochondrial-derived peptide encoded in the 12S rRNA region and represented in mitochondrial-function research.",
+    href: "/research/mots-c",
   },
   {
-    no: "R-05",
-    title: "What is CJC-1295 / Ipamorelin?",
-    cls: "Secretagogues · co-lyophilised blend",
-    body: "Two secretagogue peptides supplied as a single co-lyophilised reference blend so both travel under one batch certificate. Chemistry only — we say nothing about use.",
+    category: "Copper Peptide",
+    title: "What is GHK-Cu?",
+    body: "A naturally occurring copper-binding tripeptide represented in protein-synthesis and extracellular-matrix research.",
+    href: "/research/ghk-cu",
   },
-];
+] as const;
 
 export default function ResearchPage() {
   return (
-    <div className="mx-auto max-w-310 px-5">
-      <header className="glow grid gap-8 border-b border-line py-16 lg:grid-cols-12 lg:py-20">
-        <div className="lg:col-span-8">
-          <p className="label text-lime">Research notes · {NOTES.length} entries</p>
-          <h1 className="font-display mt-5 text-[clamp(2.4rem,6vw,4.4rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-ink">
-            The chemistry,
-            <br />
-            and nothing it isn&apos;t.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-ink-2">
-            Short reference notes on what each reagent class actually is —
-            structure and classification, full stop. We don&apos;t publish
-            protocols, dosing or outcomes, because we sell reagents, not advice.
-          </p>
+    <div className="-mb-24 bg-[#06090e] pb-24 text-ink">
+      <section className="relative min-h-[690px] overflow-hidden border-b border-line">
+        <Image
+          src={researchHero}
+          alt=""
+          fill
+          priority
+          placeholder="blur"
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,7,11,0.98)_0%,rgba(4,7,11,0.9)_45%,rgba(4,7,11,0.42)_75%,rgba(4,7,11,0.18)_100%)]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#06090e] to-transparent"
+          aria-hidden="true"
+        />
+
+        <div className="relative mx-auto flex min-h-[690px] max-w-[1240px] items-center px-5 py-16">
+          <div className="w-full max-w-[950px]">
+            <p className="datum inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-lime">
+              <span className="h-2 w-2 rounded-full bg-lime shadow-[0_0_9px_var(--color-lime)]" />
+              Elite Biotech research
+            </p>
+            <h1 className="font-display mt-6 text-[clamp(3.2rem,7vw,5.3rem)] font-extrabold leading-[0.94] tracking-[-0.05em]">
+              Research overviews
+            </h1>
+            <p className="mt-6 max-w-[900px] text-base leading-8 text-ink-2 sm:text-xl sm:leading-9">
+              Plain-English, citation-led overviews of the research compounds we
+              supply—their scientific classification, receptor and pathway
+              mechanisms represented in literature, and how each is handled as a
+              laboratory reference material.
+            </p>
+            <div className="mt-8 flex gap-4 rounded-2xl border border-lime/30 bg-[#080d14]/75 p-5 text-sm leading-6 text-ink-2 backdrop-blur-sm">
+              <span className="text-xl text-lime">△</span>
+              <p>
+                <strong className="text-ink">
+                  Research use only · Not for human consumption · 18+.
+                </strong>{" "}
+                These overviews describe published scientific context and are not
+                medical advice or a recommendation to administer any compound.
+              </p>
+            </div>
+          </div>
         </div>
-      </header>
+        <div
+          className="absolute inset-x-0 bottom-0 h-px bg-[linear-gradient(90deg,transparent,var(--color-lime),transparent)]"
+          aria-hidden="true"
+        />
+      </section>
 
-      <ul className="py-8">
-        {NOTES.map((n) => (
-          <li key={n.no}>
+      <main className="mx-auto max-w-[1120px] px-5 py-16 lg:py-20">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {OVERVIEWS.map((overview) => (
             <Link
-              href="/shop"
-              className="group grid gap-4 border-b border-line py-8 transition-colors hover:bg-paper-2/60 sm:grid-cols-12 sm:gap-6"
+              key={overview.title}
+              href={overview.href}
+              className="group relative flex min-h-[320px] flex-col overflow-hidden rounded-[22px] border border-line bg-[#0d131c] p-7 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-lime/60 hover:shadow-[0_18px_55px_-28px_var(--color-lime)]"
             >
-              <div className="sm:col-span-3">
-                <span className="datum text-sm text-lime">{n.no}</span>
-                <p className="datum mt-2 text-xs text-ink-3">{n.cls}</p>
-              </div>
-              <div className="sm:col-span-7">
-                <h2 className="font-display text-2xl font-bold tracking-tight text-ink transition-colors group-hover:text-lime sm:text-3xl">
-                  {n.title}
-                </h2>
-                <p className="mt-3 max-w-xl text-ink-2">{n.body}</p>
-              </div>
-              <div className="datum flex items-start text-sm text-ink-2 sm:col-span-2 sm:justify-end">
-                View reagent
-                <span className="ml-2 transition-transform group-hover:translate-x-1" aria-hidden>→</span>
-              </div>
+              <span
+                className="absolute left-0 top-0 h-[2px] w-1/4 bg-lime transition-[width] duration-500 group-hover:w-full"
+                aria-hidden="true"
+              />
+              <p className="datum text-xs font-semibold uppercase tracking-[0.12em] text-lime">
+                {overview.category}
+              </p>
+              <h2 className="font-display mt-3 text-2xl font-extrabold leading-tight tracking-[-0.03em]">
+                {overview.title}
+              </h2>
+              <p className="mt-4 text-base leading-7 text-ink-2">
+                {overview.body}
+              </p>
+              <span className="datum mt-auto inline-flex items-center gap-2 pt-7 text-xs font-semibold uppercase tracking-wider text-lime">
+                Read overview
+                <span className="transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </span>
             </Link>
-          </li>
-        ))}
-      </ul>
+          ))}
 
-      <div className="border-t border-line py-14">
-        <p className="max-w-2xl text-sm leading-relaxed text-ink-2">
-          Everything described above is sold strictly for laboratory and research
-          use only — not for human or veterinary consumption. Nothing here is
-          medical, clinical or dosing guidance. 18+.
-        </p>
-      </div>
+          <Link
+            href="/shop"
+            className="group relative flex min-h-[320px] flex-col overflow-hidden rounded-[22px] border border-lime/40 bg-[#0d131c] p-7 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-lime hover:shadow-[0_18px_55px_-28px_var(--color-lime)]"
+          >
+            <span
+              className="absolute left-0 top-0 h-[2px] w-1/4 bg-lime transition-[width] duration-500 group-hover:w-full"
+              aria-hidden="true"
+            />
+            <p className="datum text-xs font-semibold uppercase tracking-[0.12em] text-lime">
+              Catalogue
+            </p>
+            <h2 className="font-display mt-3 text-2xl font-extrabold leading-tight tracking-[-0.03em]">
+              Browse all research peptides
+            </h2>
+            <p className="mt-4 text-base leading-7 text-ink-2">
+              Open the full Elite Biotech research register—every listed product
+              connected to its available batch documentation.
+            </p>
+            <span className="datum mt-auto inline-flex items-center gap-2 pt-7 text-xs font-semibold uppercase tracking-wider text-lime">
+              Shop the catalogue
+              <span className="transition-transform group-hover:translate-x-1">
+                →
+              </span>
+            </span>
+          </Link>
+        </div>
+      </main>
     </div>
   );
 }

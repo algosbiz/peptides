@@ -1,90 +1,106 @@
 import Link from "next/link";
 import { HplcTrace } from "@/components/hplc-trace";
-import { METHOD, COAS } from "@/lib/data";
-import { SectionIndex } from "@/components/ui";
+import { COAS } from "@/lib/data";
+
+const STEPS = [
+  ["01", "Independent lab — every batch", "A production sample goes to a third-party analytical laboratory."],
+  ["02", "HPLC & LC-MS", "Purity is quantified and identity is confirmed where the method is listed."],
+  ["03", "Attached to the batch", "The certificate is published with the exact searchable batch reference."],
+];
 
 export function Assurance() {
-  const batch = COAS.find((c) => c.batch === "RT-2604")!;
+  const batch = COAS.find((coa) => coa.batch === "RT-2604") ?? COAS[0];
 
   return (
-    <section className="bg-forest text-on-forest">
+    <section className="border-y border-line bg-[#06090e]">
       <div className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5">
-            <SectionIndex n={3} total={7} onForest>
-              Third-party COA
-            </SectionIndex>
-            <h2 className="font-display mt-5 text-[clamp(2.1rem,4.4vw,3.4rem)] leading-[1.02] tracking-tight">
-              Graded by a lab with{" "}
-              <span className="italic text-lime">no reason</span> to flatter us.
-            </h2>
-            <p className="mt-6 max-w-md leading-relaxed text-on-forest-2">
-              Every batch leaves WA only after an independent analytical lab runs
-              it. HPLC tells us how pure it is; LC-MS confirms it is the molecule
-              on the label. We publish the result either way — including the runs
-              we wish had gone better.
-            </p>
-            <Link
-              href="/certificate-of-analysis"
-              className="datum group mt-9 inline-flex items-center gap-2 bg-lime px-6 py-3.5 text-sm font-medium uppercase tracking-wider text-onlime transition-opacity hover:opacity-90"
-            >
-              Read every certificate
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Link>
-          </div>
+        <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-start">
+          <h2 className="font-display max-w-4xl text-[clamp(2.7rem,6vw,4.5rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.05em]">
+            Tested by a lab that <span className="text-lime">isn&apos;t us.</span>
+          </h2>
+          <p className="text-base leading-7 text-ink-2 sm:text-lg">
+            Every batch is sent to an independent laboratory and analysed for
+            identity and purity. The certificate is matched to its exact batch.
+          </p>
+        </div>
 
-          {/* oversized chromatogram — the focal graphic */}
-          <div className="lg:col-span-7">
-            <div className="border border-forest-line">
-              <div className="flex items-center justify-between border-b border-forest-line px-5 py-3">
-                <span className="label text-on-forest-2!">
-                  {batch.compound} · {batch.batch}
-                </span>
-                <span className="label text-on-forest-2!">{batch.method}</span>
+        <div className="mt-12 grid gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="group relative overflow-hidden rounded-[24px] border border-lime/35 bg-[#0d131c]">
+            <span className="absolute left-0 top-0 h-[2px] w-1/3 bg-lime transition-[width] duration-500 group-hover:w-full" />
+            <div className="flex items-center justify-between border-b border-line p-5">
+              <div>
+                <p className="font-display font-extrabold uppercase">
+                  Certificate of analysis
+                </p>
+                <p className="datum mt-1 text-xs text-ink-3">
+                  Independent third-party lab
+                </p>
               </div>
-
-              <div className="relative px-2 pb-2 pt-8 text-lime">
-                <div className="pointer-events-none absolute left-6 top-6 z-10">
-                  <p className="datum text-[clamp(3rem,9vw,6.5rem)] font-medium leading-none text-on-forest">
-                    {batch.purity}
-                    <span className="text-[0.4em] text-lime">% area</span>
-                  </p>
-                  <p className="label text-on-forest-2! mt-2">Single dominant peak · 0.62 RT</p>
-                </div>
+              <span className="datum rounded-full border border-lime/35 bg-lime/10 px-4 py-2 text-xs font-semibold uppercase text-lime">
+                ✓ Pass
+              </span>
+            </div>
+            <div className="p-5">
+              <div className="flex flex-wrap justify-between gap-4">
+                <p className="font-display text-lg font-bold">
+                  {batch.compound} · 10 mg
+                </p>
+                <p className="datum text-xs uppercase tracking-wider text-ink-3">
+                  Lot {batch.batch}
+                </p>
+              </div>
+              <div className="mt-4 rounded-xl border border-line bg-[#080d14] p-4 text-lime">
                 <HplcTrace
-                  className="h-56 w-full sm:h-72"
+                  className="h-52 w-full"
                   label={`${batch.purity}% area`}
                 />
               </div>
-
-              <dl className="grid grid-cols-3 divide-x divide-forest-line border-t border-forest-line">
+              <dl className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-line">
                 {[
-                  ["Assayed", batch.assayed],
+                  ["Purity (HPLC)", `${batch.purity}%`],
+                  ["Identity", batch.method.includes("LC-MS") ? "Confirmed" : "HPLC"],
                   ["Mass found", batch.massFound],
-                  ["Mass calc.", batch.massExpected],
-                ].map(([k, v]) => (
-                  <div key={k} className="px-4 py-3">
-                    <dt className="label text-on-forest-2!">{k}</dt>
-                    <dd className="datum mt-1 text-sm text-on-forest">{v}</dd>
+                  ["Test date", batch.assayed],
+                ].map(([label, value]) => (
+                  <div key={label} className="bg-[#0d131c] p-4">
+                    <dt className="text-xs text-ink-3">{label}</dt>
+                    <dd className="datum mt-1 font-semibold text-ink">{value}</dd>
                   </div>
                 ))}
               </dl>
             </div>
           </div>
-        </div>
 
-        {/* method, three steps, hairline-ruled */}
-        <ol className="mt-16 grid gap-px border-t border-forest-line sm:grid-cols-3">
-          {METHOD.map((m) => (
-            <li key={m.step} className="pt-7 sm:pr-8">
-              <div className="flex items-baseline gap-3">
-                <span className="datum text-sm text-lime">{m.step}</span>
-                <h3 className="font-display text-xl text-on-forest">{m.title}</h3>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-on-forest-2">{m.body}</p>
-            </li>
-          ))}
-        </ol>
+          <div className="flex flex-col justify-center">
+            <ol className="space-y-7">
+              {STEPS.map(([number, title, body]) => (
+                <li key={number} className="grid grid-cols-[2.5rem_1fr] gap-4">
+                  <span className="datum font-semibold text-lime">{number}</span>
+                  <div>
+                    <h3 className="font-display font-extrabold uppercase">{title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-ink-2">{body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div className="mt-8 flex flex-wrap gap-2">
+              {["HPLC", "LC-MS", "Batch matched", "Independent"].map((tag) => (
+                <span
+                  key={tag}
+                  className="datum rounded-full border border-line px-4 py-2 text-[0.65rem] font-semibold uppercase tracking-wider text-ink-2"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <Link
+              href="/certificate-of-analysis"
+              className="datum mt-8 w-fit rounded-full bg-lime px-7 py-4 text-xs font-semibold uppercase tracking-wider text-onlime"
+            >
+              Browse the COA library →
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

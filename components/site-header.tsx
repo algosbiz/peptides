@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NAV, SITE, CATEGORY_ORDER, slugify } from "@/lib/data";
 
 function Icon({ d, label }: { d: string; label: string }) {
@@ -29,16 +29,52 @@ const ICONS = {
   bag: "M6 8h12l-1 12H7L6 8z M9 8a3 3 0 0 1 6 0",
 };
 
+const categoryHref = (category: string) => `/shop/${slugify(category)}`;
+
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
+  const [showPromo, setShowPromo] = useState(true);
+
+  useEffect(() => {
+    const updatePromo = () => setShowPromo(window.scrollY < 24);
+
+    updatePromo();
+    window.addEventListener("scroll", updatePromo, { passive: true });
+
+    return () => window.removeEventListener("scroll", updatePromo);
+  }, []);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/80 backdrop-blur-xl">
+      <div
+        className={`relative overflow-hidden border-b transition-[max-height,opacity,transform,border-color] duration-300 ease-out ${
+          showPromo
+            ? "max-h-12 translate-y-0 border-line opacity-100"
+            : "max-h-0 -translate-y-2 border-transparent opacity-0"
+        }`}
+      >
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent_0%,var(--color-lime)_18%,var(--color-lime)_72%,transparent_100%)]"
+          aria-hidden="true"
+        />
+        <Link
+          href="/shop"
+          className="datum mx-auto flex min-h-11 max-w-[1280px] items-center justify-center gap-2 px-5 text-center text-[0.65rem] font-semibold uppercase tracking-[0.08em] text-ink transition-colors hover:text-lime sm:text-xs"
+        >
+          <span className="text-lime" aria-hidden="true">✦</span>
+          <span>
+            Free express shipping on orders over{" "}
+            <strong className="text-lime">$200</strong>
+          </span>
+          <span className="text-lime" aria-hidden="true">→</span>
+        </Link>
+      </div>
+
       <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-6 px-5 py-3.5">
         {/* wordmark */}
         <Link href="/" className="group flex shrink-0 items-baseline gap-1.5" aria-label="Home">
@@ -78,7 +114,7 @@ export function SiteHeader() {
                       {CATEGORY_ORDER.map((c) => (
                         <Link
                           key={c}
-                          href={`/shop#${slugify(c)}`}
+                          href={categoryHref(c)}
                           className="datum rounded-sm px-3 py-2.5 text-sm text-ink-2 transition-colors hover:bg-paper-3 hover:text-ink"
                         >
                           {c}
@@ -112,7 +148,7 @@ export function SiteHeader() {
             <Icon d={ICONS.search} label="Search" />
           </button>
           <Link
-            href="/support"
+            href="/account"
             className="hidden h-10 w-10 items-center justify-center rounded-md border border-line text-ink-2 transition-colors hover:border-line-2 hover:text-ink sm:flex"
             aria-label="Account"
           >
@@ -178,7 +214,7 @@ export function SiteHeader() {
                     {CATEGORY_ORDER.map((c) => (
                       <Link
                         key={c}
-                        href={`/shop#${slugify(c)}`}
+                        href={categoryHref(c)}
                         onClick={() => setOpen(false)}
                         className="datum py-2 text-sm text-ink-2"
                       >
