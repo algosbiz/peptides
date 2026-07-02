@@ -3,6 +3,7 @@ import { Montserrat, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { CartProvider } from "@/components/cart";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -50,9 +51,11 @@ export default function RootLayout({
       className={`${montserrat.variable} ${inter.variable} ${plex.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <CartProvider>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </CartProvider>
       </body>
     </html>
   );

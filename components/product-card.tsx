@@ -1,10 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import { STATUS_LABEL, PRODUCT_RATINGS, type Product } from "@/lib/data";
 import { formatPrice } from "@/components/ui";
 import { VialMockup } from "@/components/vial-mockup";
+import { useCart } from "@/components/cart";
 
 export function ProductCard({ product: p }: { product: Product }) {
   const review = PRODUCT_RATINGS[p.no];
+  const { addItem } = useCart();
+  const canAdd = p.status !== "retired";
 
   return (
     <article className="group ruled relative flex flex-col overflow-hidden rounded-[22px] bg-[#0d131c] transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-lime/60 hover:shadow-[0_18px_60px_-25px_color-mix(in_oklch,var(--color-lime)_38%,transparent)]">
@@ -88,9 +93,15 @@ export function ProductCard({ product: p }: { product: Product }) {
             </Link>
             <button
               type="button"
-              className="datum hidden items-center gap-1.5 rounded-full bg-lime px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-onlime transition-opacity hover:opacity-90 group-hover:inline-flex group-focus-within:inline-flex"
+              onClick={() => addItem(p)}
+              disabled={!canAdd}
+              className="datum inline-flex items-center gap-1.5 rounded-full bg-lime px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-onlime transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:bg-paper-3 disabled:text-ink-3 disabled:opacity-70"
+              aria-label={
+                canAdd ? `Add ${p.name} to cart` : `${p.name} is unavailable`
+              }
             >
-              <span aria-hidden>+</span> Add
+              <span aria-hidden>{canAdd ? "+" : "×"}</span>{" "}
+              {canAdd ? "Add" : "Unavailable"}
             </button>
           </div>
         </div>

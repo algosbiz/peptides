@@ -44,10 +44,10 @@ function Notice({ children }: { children: React.ReactNode }) {
 export default function AccountPage() {
   return (
     <div className="-mb-24 bg-[#06090e] pb-24 text-ink">
-      <section className="relative min-h-[560px] overflow-hidden border-b border-line">
+      <section className="relative min-h-140 overflow-hidden border-b border-line">
         <Image src={accountHero} alt="" fill priority placeholder="blur" sizes="100vw" className="object-cover object-center" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,7,11,0.99)_0%,rgba(4,7,11,0.95)_42%,rgba(4,7,11,0.38)_72%,rgba(4,7,11,0.12)_100%)]" aria-hidden="true" />
-        <div className="relative mx-auto grid min-h-[560px] max-w-[1240px] items-center gap-12 px-5 py-16 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="relative mx-auto grid min-h-140 max-w-310 items-center gap-12 px-5 py-16 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <p className="datum flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-lime">
               <span className="h-2 w-2 rounded-full bg-lime shadow-[0_0_9px_var(--color-lime)]" /> Research account
@@ -64,7 +64,7 @@ export default function AccountPage() {
               ))}
             </div>
           </div>
-          <nav className="rounded-[24px] border border-lime/35 bg-[#0d131c]/95 p-6 backdrop-blur-md">
+          <nav className="rounded-3xl border border-lime/35 bg-[#0d131c]/95 p-6 backdrop-blur-md">
             <p className="datum inline-flex rounded-full border border-lime/30 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-lime">Quick links</p>
             <div className="mt-5 space-y-3">
               {[["Shop", "/shop"], ["COA library", "/certificate-of-analysis"], ["Support", "/support"]].map(([label, href]) => (
@@ -78,11 +78,11 @@ export default function AccountPage() {
         <div className="absolute inset-x-0 bottom-0 h-px bg-[linear-gradient(90deg,transparent,var(--color-lime),transparent)]" aria-hidden="true" />
       </section>
 
-      <main className="mx-auto grid max-w-[1240px] items-start gap-7 px-5 py-16 lg:grid-cols-[0.82fr_1.18fr] lg:py-20">
+      <main className="mx-auto grid max-w-310 items-start gap-7 px-5 py-16 lg:grid-cols-[0.82fr_1.18fr] lg:py-20">
         <form className="relative overflow-hidden rounded-[28px] border border-lime/30 bg-[#0d131c] p-6 sm:p-9">
           <span className="datum text-xs font-semibold uppercase tracking-[0.14em] text-ink-3">Returning customer</span>
           <h2 className="font-display mt-6 text-4xl font-extrabold uppercase">Login</h2>
-          <div className="mt-7 h-px w-28 bg-gradient-to-r from-lime to-transparent" />
+          <div className="mt-7 h-px w-28 bg-linear-to-r from-lime to-transparent" />
           <div className="mt-6"><Notice>Return to track orders, manage saved details and keep your Elite Biotech research account documents together.</Notice></div>
           <label htmlFor="login-email" className="mt-8 block">
             <span className="label">Username or email address <span className="text-clay">*</span></span>
@@ -92,7 +92,7 @@ export default function AccountPage() {
           <Link href="/support" className="mt-5 block text-right text-sm font-semibold text-lime">Forgot your password?</Link>
           <div className="mt-7 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <label className="datum flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-ink-3">
-              <input type="checkbox" className="h-5 w-5 accent-[var(--color-lime)]" /> Remember me
+              <input type="checkbox" className="h-5 w-5 accent-lime" /> Remember me
             </label>
             <button type="button" className="datum min-h-14 min-w-52 rounded-full border border-lime/40 bg-lime/5 px-7 text-xs font-semibold uppercase tracking-wider text-lime shadow-[0_10px_30px_-20px_var(--color-lime)] transition hover:bg-lime hover:text-onlime">Log in</button>
           </div>
@@ -101,7 +101,7 @@ export default function AccountPage() {
         <form className="relative overflow-hidden rounded-[28px] border border-lime/30 bg-[#0d131c] p-6 sm:p-9">
           <span className="datum text-xs font-semibold uppercase tracking-[0.14em] text-ink-3">Research account</span>
           <h2 className="font-display mt-6 text-4xl font-extrabold uppercase">Register</h2>
-          <div className="mt-7 h-px w-28 bg-gradient-to-r from-lime to-transparent" />
+          <div className="mt-7 h-px w-28 bg-linear-to-r from-lime to-transparent" />
           <div className="mt-6"><Notice>Set up an Elite Biotech research account to manage orders, saved details and verification in one place.</Notice></div>
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
             <label htmlFor="first-name"><span className="label">First name <span className="text-clay">*</span></span><input id="first-name" name="firstName" required className={inputClass} /></label>
@@ -135,12 +135,12 @@ export default function AccountPage() {
               "I understand Elite Biotech may refuse or suspend account access where information or intended use conflicts with applicable terms or law.",
             ].map((declaration) => (
               <label key={declaration} className="datum flex gap-4 rounded-2xl border border-lime/20 bg-[#080d14] p-5 text-[0.7rem] font-semibold uppercase leading-5 tracking-wider text-ink-2">
-                <input type="checkbox" required className="mt-0.5 h-5 w-5 shrink-0 accent-[var(--color-lime)]" /> {declaration}
+                <input type="checkbox" required className="mt-0.5 h-5 w-5 shrink-0 accent-lime" /> {declaration}
               </label>
             ))}
           </fieldset>
           <label className="datum mt-4 flex gap-4 rounded-2xl border border-line bg-[#080d14] p-5 text-[0.7rem] font-semibold uppercase leading-5 tracking-wider text-ink-2">
-            <input type="checkbox" className="mt-0.5 h-5 w-5 shrink-0 accent-[var(--color-lime)]" /> Email me Elite Biotech product updates, releases and offers.
+            <input type="checkbox" className="mt-0.5 h-5 w-5 shrink-0 accent-lime" /> Email me Elite Biotech product updates, releases and offers.
           </label>
           <p className="mt-5 rounded-2xl border border-lime/20 bg-[#080d14] p-5 text-sm leading-7 text-ink-2">
             <strong className="datum block text-xs uppercase tracking-wider text-lime">Privacy notice</strong>

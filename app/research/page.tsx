@@ -45,7 +45,7 @@ const OVERVIEWS = [
 export default function ResearchPage() {
   return (
     <div className="-mb-24 bg-[#06090e] pb-24 text-ink">
-      <section className="relative min-h-[690px] overflow-hidden border-b border-line">
+      <section className="relative min-h-172.5 overflow-hidden border-b border-line">
         <Image
           src={researchHero}
           alt=""
@@ -60,20 +60,20 @@ export default function ResearchPage() {
           aria-hidden="true"
         />
         <div
-          className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#06090e] to-transparent"
+          className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-[#06090e] to-transparent"
           aria-hidden="true"
         />
 
-        <div className="relative mx-auto flex min-h-[690px] max-w-[1240px] items-center px-5 py-16">
-          <div className="w-full max-w-[950px]">
+        <div className="relative mx-auto flex min-h-172.5 max-w-310 items-center px-5 py-16">
+          <div className="w-full max-w-237.5">
             <p className="datum inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-lime">
               <span className="h-2 w-2 rounded-full bg-lime shadow-[0_0_9px_var(--color-lime)]" />
               Elite Biotech research
             </p>
-            <h1 className="font-display mt-6 text-[clamp(3.2rem,7vw,5.3rem)] font-extrabold leading-[0.94] tracking-[-0.05em]">
+            <h1 className="font-display mt-6 text-[clamp(3.2rem,7vw,5.3rem)] font-extrabold leading-[0.94] tracking-tighter">
               Research overviews
             </h1>
-            <p className="mt-6 max-w-[900px] text-base leading-8 text-ink-2 sm:text-xl sm:leading-9">
+            <p className="mt-6 max-w-225 text-base leading-8 text-ink-2 sm:text-xl sm:leading-9">
               Plain-English, citation-led overviews of the research compounds we
               supply—their scientific classification, receptor and pathway
               mechanisms represented in literature, and how each is handled as a
@@ -97,16 +97,16 @@ export default function ResearchPage() {
         />
       </section>
 
-      <main className="mx-auto max-w-[1120px] px-5 py-16 lg:py-20">
+      <main className="mx-auto max-w-280 px-5 py-16 lg:py-20">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {OVERVIEWS.map((overview) => (
             <Link
               key={overview.title}
               href={overview.href}
-              className="group relative flex min-h-[320px] flex-col overflow-hidden rounded-[22px] border border-line bg-[#0d131c] p-7 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-lime/60 hover:shadow-[0_18px_55px_-28px_var(--color-lime)]"
+              className="group relative flex min-h-80 flex-col overflow-hidden rounded-[22px] border border-line bg-[#0d131c] p-7 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-lime/60 hover:shadow-[0_18px_55px_-28px_var(--color-lime)]"
             >
               <span
-                className="absolute left-0 top-0 h-[2px] w-1/4 bg-lime transition-[width] duration-500 group-hover:w-full"
+                className="absolute left-0 top-0 h-0.5 w-1/4 bg-lime transition-[width] duration-500 group-hover:w-full"
                 aria-hidden="true"
               />
               <p className="datum text-xs font-semibold uppercase tracking-[0.12em] text-lime">
@@ -129,10 +129,10 @@ export default function ResearchPage() {
 
           <Link
             href="/shop"
-            className="group relative flex min-h-[320px] flex-col overflow-hidden rounded-[22px] border border-lime/40 bg-[#0d131c] p-7 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-lime hover:shadow-[0_18px_55px_-28px_var(--color-lime)]"
+            className="group relative flex min-h-80 flex-col overflow-hidden rounded-[22px] border border-lime/40 bg-[#0d131c] p-7 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-lime hover:shadow-[0_18px_55px_-28px_var(--color-lime)]"
           >
             <span
-              className="absolute left-0 top-0 h-[2px] w-1/4 bg-lime transition-[width] duration-500 group-hover:w-full"
+              className="absolute left-0 top-0 h-0.5 w-1/4 bg-lime transition-[width] duration-500 group-hover:w-full"
               aria-hidden="true"
             />
             <p className="datum text-xs font-semibold uppercase tracking-[0.12em] text-lime">

@@ -53,7 +53,7 @@ export default async function SupportArticlePage({
           className="absolute inset-0 bg-[radial-gradient(circle_at_76%_0%,color-mix(in_oklch,var(--color-lime)_18%,transparent),transparent_46%)]"
           aria-hidden="true"
         />
-        <div className="relative mx-auto max-w-[1240px] px-5 py-14 lg:py-20">
+        <div className="relative mx-auto max-w-310 px-5 py-14 lg:py-20">
           <nav
             className="datum flex flex-wrap items-center gap-2 text-xs uppercase tracking-wider text-ink-3"
             aria-label="Breadcrumb"
@@ -72,7 +72,7 @@ export default async function SupportArticlePage({
           <p className="datum mt-10 text-xs font-semibold uppercase tracking-[0.15em] text-lime">
             {topic?.title} · Updated {article.updated}
           </p>
-          <h1 className="font-display mt-4 max-w-5xl text-[clamp(2.4rem,6vw,4.7rem)] font-extrabold leading-[0.98] tracking-[-0.05em]">
+          <h1 className="font-display mt-4 max-w-5xl text-[clamp(2.4rem,6vw,4.7rem)] font-extrabold leading-[0.98] tracking-tighter">
             {article.title}
           </h1>
           <p className="mt-6 max-w-3xl text-base leading-7 text-ink-2 sm:text-lg">
@@ -85,7 +85,7 @@ export default async function SupportArticlePage({
         />
       </header>
 
-      <div className="mx-auto grid max-w-[1240px] gap-12 px-5 py-16 lg:grid-cols-[minmax(0,1fr)_300px] lg:py-24">
+      <div className="mx-auto grid max-w-310 gap-12 px-5 py-16 lg:grid-cols-[minmax(0,1fr)_300px] lg:py-24">
         <article className="min-w-0">
           {article.sections.map((section, index) => (
             <section

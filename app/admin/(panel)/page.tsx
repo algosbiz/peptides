@@ -29,7 +29,7 @@ export default async function AdminProductsPage() {
       </div>
 
       <div className="mt-6 overflow-x-auto">
-        <table className="w-full min-w-[760px] border-collapse">
+        <table className="w-full min-w-190 border-collapse">
           <thead>
             <tr className="border-b border-line text-left">
               <th className="label py-3 pr-4 font-normal">No.</th>

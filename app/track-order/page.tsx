@@ -27,14 +27,14 @@ function PackageIcon() {
 
 export default function TrackOrderPage() {
   return (
-    <div className="-mb-24 min-h-[760px] bg-[#06090e] pb-24 text-ink">
-      <main className="mx-auto max-w-[1240px] px-5 py-16 lg:py-20">
+    <div className="-mb-24 min-h-190 bg-[#06090e] pb-24 text-ink">
+      <main className="mx-auto max-w-310 px-5 py-16 lg:py-20">
         <header className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
           <div>
             <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
               Order tracking
             </p>
-            <h1 className="font-display mt-4 text-[clamp(3rem,7vw,5rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.05em]">
+            <h1 className="font-display mt-4 text-[clamp(3rem,7vw,5rem)] font-extrabold uppercase leading-[0.94] tracking-tighter">
               Track your <span className="text-lime">order.</span>
             </h1>
           </div>
@@ -44,7 +44,7 @@ export default function TrackOrderPage() {
           </p>
         </header>
 
-        <section className="mx-auto mt-12 max-w-[700px]">
+        <section className="mx-auto mt-12 max-w-175">
           <form
             className="relative overflow-hidden rounded-[28px] border border-lime/35 bg-[#0d131c] p-6 shadow-[0_20px_70px_-42px_var(--color-lime)] sm:p-10"
             aria-label="Track order"

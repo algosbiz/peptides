@@ -39,7 +39,7 @@ export default async function ResearchArticlePage({
 
   return (
     <div className="-mb-24 bg-[#06090e] pb-24 text-ink">
-      <header className="relative min-h-[660px] overflow-hidden border-b border-line">
+      <header className="relative min-h-165 overflow-hidden border-b border-line">
         <Image
           src={article.hero}
           alt=""
@@ -53,20 +53,20 @@ export default async function ResearchArticlePage({
           aria-hidden="true"
         />
         <div
-          className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#06090e] to-transparent"
+          className="absolute inset-x-0 bottom-0 h-44 bg-linear-to-t from-[#06090e] to-transparent"
           aria-hidden="true"
         />
 
-        <div className="relative mx-auto flex min-h-[660px] max-w-[1120px] items-center px-5 py-16">
-          <div className="w-full max-w-[1100px]">
+        <div className="relative mx-auto flex min-h-165 max-w-280 items-center px-5 py-16">
+          <div className="w-full max-w-275">
             <p className="datum inline-flex items-center gap-2 rounded-full border border-lime/35 bg-[#07101b]/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-lime backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-lime shadow-[0_0_10px_var(--color-lime)]" />
               Research overview
             </p>
-            <h1 className="font-display mt-6 max-w-[950px] text-[clamp(3.1rem,6.5vw,5rem)] font-extrabold leading-[0.95] tracking-[-0.05em]">
+            <h1 className="font-display mt-6 max-w-237.5 text-[clamp(3.1rem,6.5vw,5rem)] font-extrabold leading-[0.95] tracking-tighter">
               {article.title}
             </h1>
-            <p className="mt-7 max-w-[930px] text-lg leading-8 text-ink-2 sm:text-xl sm:leading-9">
+            <p className="mt-7 max-w-232.5 text-lg leading-8 text-ink-2 sm:text-xl sm:leading-9">
               {article.intro}
             </p>
 
@@ -101,12 +101,12 @@ export default async function ResearchArticlePage({
         />
       </header>
 
-      <main className="mx-auto max-w-[1120px] px-5 py-14 lg:py-20">
+      <main className="mx-auto max-w-280 px-5 py-14 lg:py-20">
         <article className="space-y-14">
           {article.sections.map((section) => (
             <section key={section.title}>
               <span
-                className="block h-[3px] w-12 rounded-full bg-lime shadow-[0_0_12px_var(--color-lime)]"
+                className="block h-0.75 w-12 rounded-full bg-lime shadow-[0_0_12px_var(--color-lime)]"
                 aria-hidden="true"
               />
               <h2 className="font-display mt-5 text-3xl font-extrabold uppercase tracking-[-0.035em] sm:text-4xl">
@@ -133,7 +133,7 @@ export default async function ResearchArticlePage({
               )}
 
               {section.note && (
-                <p className="mt-7 rounded-2xl border-l-2 border-lime bg-lime/[0.06] px-5 py-4 text-base leading-7 text-ink-2">
+                <p className="mt-7 rounded-2xl border-l-2 border-lime bg-lime/6 px-5 py-4 text-base leading-7 text-ink-2">
                   {section.note}
                 </p>
               )}
@@ -175,7 +175,7 @@ export default async function ResearchArticlePage({
           </p>
         </section>
 
-        <aside className="mt-10 flex gap-5 rounded-[22px] border border-lime/40 bg-lime/[0.06] p-6 sm:p-8">
+        <aside className="mt-10 flex gap-5 rounded-[22px] border border-lime/40 bg-lime/6 p-6 sm:p-8">
           <span className="text-3xl text-lime">△</span>
           <div>
             <h2 className="font-display text-xl font-extrabold uppercase">

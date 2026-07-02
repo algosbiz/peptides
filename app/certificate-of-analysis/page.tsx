@@ -81,13 +81,13 @@ export default function CoaPage() {
           className="absolute inset-0 bg-[radial-gradient(circle_at_76%_18%,color-mix(in_oklch,var(--color-lime)_12%,transparent),transparent_34%)]"
           aria-hidden="true"
         />
-        <div className="relative mx-auto grid max-w-[1240px] gap-12 px-5 py-20 lg:grid-cols-[1.45fr_0.95fr] lg:items-center lg:py-28">
+        <div className="relative mx-auto grid max-w-310 gap-12 px-5 py-20 lg:grid-cols-[1.45fr_0.95fr] lg:items-center lg:py-28">
           <div>
             <p className="datum flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-lime">
               <span className="h-2 w-2 rounded-full bg-lime shadow-[0_0_10px_var(--color-lime)]" />
               Third-party verified
             </p>
-            <h1 className="font-display mt-5 max-w-[800px] text-[clamp(3rem,7vw,5.3rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.055em]">
+            <h1 className="font-display mt-5 max-w-200 text-[clamp(3rem,7vw,5.3rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.055em]">
               Certificate of analysis{" "}
               <span className="text-lime">library.</span>
             </h1>
@@ -170,19 +170,19 @@ export default function CoaPage() {
           }}
           aria-hidden="true"
         />
-        <div className="relative mx-auto max-w-[1240px] px-5 py-16 lg:py-20">
+        <div className="relative mx-auto max-w-310 px-5 py-16 lg:py-20">
           <CoaLibrary coas={COAS} />
         </div>
       </section>
 
       <section className="relative border-t border-line bg-[#080c12]/85">
-        <div className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
+        <div className="mx-auto max-w-310 px-5 py-20 lg:py-28">
           <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
             <div>
               <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
                 How it works
               </p>
-              <h2 className="font-display mt-4 max-w-3xl text-[clamp(2.5rem,6vw,4.2rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.05em]">
+              <h2 className="font-display mt-4 max-w-3xl text-[clamp(2.5rem,6vw,4.2rem)] font-extrabold uppercase leading-[0.94] tracking-tighter">
                 From batch to <span className="text-lime">your order.</span>
               </h2>
             </div>

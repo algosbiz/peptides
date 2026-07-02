@@ -138,7 +138,7 @@ const inputClass =
 export default function SupportPage() {
   return (
     <div className="-mb-24 bg-[#06090e] pb-24 text-ink">
-      <section className="relative min-h-[520px] overflow-hidden border-b border-line">
+      <section className="relative min-h-130 overflow-hidden border-b border-line">
         <Image
           src={supportHero}
           alt=""
@@ -153,12 +153,12 @@ export default function SupportPage() {
           aria-hidden="true"
         />
         <div
-          className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#06090e] to-transparent"
+          className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-[#06090e] to-transparent"
           aria-hidden="true"
         />
 
-        <div className="relative z-10 mx-auto flex min-h-[520px] max-w-[1240px] items-center px-5 py-16">
-          <div className="w-full max-w-[650px]">
+        <div className="relative z-10 mx-auto flex min-h-130 max-w-310 items-center px-5 py-16">
+          <div className="w-full max-w-162.5">
             <p className="datum flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-lime">
               <span className="h-2 w-2 rounded-full bg-lime shadow-[0_0_10px_var(--color-lime)]" />
               Help centre
@@ -166,7 +166,7 @@ export default function SupportPage() {
             <h1 className="font-display mt-4 text-[clamp(3.1rem,7vw,5.4rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.055em] text-ink">
               How can we <span className="text-lime">help?</span>
             </h1>
-            <p className="mt-5 max-w-[620px] text-base leading-7 text-ink-2 sm:text-xl sm:leading-8">
+            <p className="mt-5 max-w-155 text-base leading-7 text-ink-2 sm:text-xl sm:leading-8">
               Answers on orders, shipping, COAs, payments and returns. Search
               below or browse by topic.
             </p>
@@ -191,7 +191,7 @@ export default function SupportPage() {
               </label>
               <button
                 type="submit"
-                className="datum h-16 rounded-xl bg-lime px-8 text-sm font-semibold uppercase tracking-[0.1em] text-onlime transition hover:brightness-110"
+                className="datum h-16 rounded-xl bg-lime px-8 text-sm font-semibold uppercase tracking-widest text-onlime transition hover:brightness-110"
               >
                 Search articles
               </button>
@@ -218,7 +218,7 @@ export default function SupportPage() {
           aria-hidden="true"
         />
 
-        <div className="relative mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
+        <div className="relative mx-auto max-w-310 px-5 py-20 lg:py-28">
           <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
             Find an answer
           </p>
@@ -243,18 +243,18 @@ export default function SupportPage() {
                   aria-hidden="true"
                 />
                 <div
-                  className="absolute left-0 top-0 z-20 h-[2px] w-[28%] bg-gradient-to-r from-lime via-lime to-lime/30 shadow-[0_0_12px_color-mix(in_oklch,var(--color-lime)_55%,transparent)] transition-[width] duration-500 ease-out group-hover:w-full"
+                  className="absolute left-0 top-0 z-20 h-0.5 w-[28%] bg-linear-to-r from-lime via-lime to-lime/30 shadow-[0_0_12px_color-mix(in_oklch,var(--color-lime)_55%,transparent)] transition-[width] duration-500 ease-out group-hover:w-full"
                   aria-hidden="true"
                 />
                 <span className="absolute right-4 top-4 rounded-full border border-lime/35 bg-[#06090e]/80 px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-wider text-lime">
                   {topic.count}
                 </span>
-                <div className="relative flex h-24 w-24 rotate-3 items-center justify-center rounded-[24px] border border-lime/35 bg-lime/10 text-lime shadow-[0_0_50px_color-mix(in_oklch,var(--color-lime)_24%,transparent)] transition-transform duration-300 group-hover:rotate-0 group-hover:scale-105">
+                <div className="relative flex h-24 w-24 rotate-3 items-center justify-center rounded-3xl border border-lime/35 bg-lime/10 text-lime shadow-[0_0_50px_color-mix(in_oklch,var(--color-lime)_24%,transparent)] transition-transform duration-300 group-hover:rotate-0 group-hover:scale-105">
                   <Icon name={topic.icon} className="h-11 w-11" />
                 </div>
               </div>
 
-              <div className="flex min-h-[300px] flex-col p-6">
+              <div className="flex min-h-75 flex-col p-6">
                 <h3 className="font-display text-xl font-extrabold uppercase tracking-[-0.03em]">
                   {topic.title}
                 </h3>
@@ -289,7 +289,7 @@ export default function SupportPage() {
       </section>
 
       <section className="border-y border-line bg-[#080c12]">
-        <div className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
+        <div className="mx-auto max-w-310 px-5 py-20 lg:py-28">
           <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
             <div>
               <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
@@ -341,7 +341,7 @@ export default function SupportPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1240px] px-5 py-20 lg:py-28">
+      <section className="mx-auto max-w-310 px-5 py-20 lg:py-28">
         <div className="relative overflow-hidden rounded-[28px] border border-lime/35 bg-[#0c131b] p-6 sm:p-10 lg:p-14">
           <div
             className="absolute inset-0 bg-[radial-gradient(circle_at_85%_0%,color-mix(in_oklch,var(--color-lime)_16%,transparent),transparent_45%)]"
@@ -427,7 +427,7 @@ export default function SupportPage() {
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-[1240px] px-5 pb-24">
+      <section id="contact" className="mx-auto max-w-310 px-5 pb-24">
         <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
           Send a message
         </p>
@@ -485,7 +485,7 @@ export default function SupportPage() {
           </label>
           <button
             type="submit"
-            className="datum rounded-xl bg-lime px-8 py-5 text-sm font-semibold uppercase tracking-[0.1em] text-onlime transition hover:brightness-110 sm:col-span-2"
+            className="datum rounded-xl bg-lime px-8 py-5 text-sm font-semibold uppercase tracking-widest text-onlime transition hover:brightness-110 sm:col-span-2"
           >
             Contact support
           </button>

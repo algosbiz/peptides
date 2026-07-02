@@ -16,7 +16,7 @@ export default function SupportArticlesPage() {
           className="absolute inset-0 bg-[radial-gradient(circle_at_72%_0%,color-mix(in_oklch,var(--color-lime)_17%,transparent),transparent_45%)]"
           aria-hidden="true"
         />
-        <div className="relative mx-auto max-w-[1240px] px-5 py-16 lg:py-24">
+        <div className="relative mx-auto max-w-310 px-5 py-16 lg:py-24">
           <nav className="datum text-xs uppercase tracking-wider text-ink-3">
             <Link href="/support" className="hover:text-lime">
               Help centre
@@ -41,7 +41,7 @@ export default function SupportArticlesPage() {
         />
       </header>
 
-      <main className="mx-auto max-w-[1240px] px-5 py-16 lg:py-24">
+      <main className="mx-auto max-w-310 px-5 py-16 lg:py-24">
         <div className="grid gap-5 md:grid-cols-2">
           {POPULAR_ARTICLES.map((article, index) => {
             const topic = SUPPORT_TOPICS.find(

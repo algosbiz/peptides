@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV, SITE, CATEGORY_ORDER, slugify } from "@/lib/data";
+import { useCart } from "@/components/cart";
 
 function Icon({ d, label }: { d: string; label: string }) {
   return (
@@ -33,6 +34,7 @@ const categoryHref = (category: string) => `/shop/${slugify(category)}`;
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const { itemCount, openCart } = useCart();
   const [open, setOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const [showPromo, setShowPromo] = useState(true);
@@ -154,16 +156,17 @@ export function SiteHeader() {
           >
             <Icon d={ICONS.user} label="Account" />
           </Link>
-          <Link
-            href="/shop"
+          <button
+            type="button"
+            onClick={openCart}
             className="relative flex h-10 w-10 items-center justify-center rounded-md border border-line bg-paper-2 text-ink transition-colors hover:border-lime/50"
-            aria-label="Bag"
+            aria-label={`Open cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
           >
             <Icon d={ICONS.bag} label="Bag" />
             <span className="datum absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-lime px-1 text-[0.6rem] font-semibold text-onlime">
-              0
+              {itemCount > 99 ? "99+" : itemCount}
             </span>
-          </Link>
+          </button>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}

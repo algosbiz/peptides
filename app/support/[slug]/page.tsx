@@ -44,9 +44,9 @@ export default async function SupportTopicPage({ params }: TopicPageProps) {
           className="absolute inset-0 bg-[radial-gradient(circle_at_78%_10%,color-mix(in_oklch,var(--color-lime)_18%,transparent),transparent_42%)]"
           aria-hidden="true"
         />
-        <div className="relative mx-auto max-w-[1240px] px-5 py-16 lg:py-24">
+        <div className="relative mx-auto max-w-310 px-5 py-16 lg:py-24">
           <nav
-            className="datum flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.1em] text-ink-3"
+            className="datum flex flex-wrap items-center gap-2 text-xs uppercase tracking-widest text-ink-3"
             aria-label="Breadcrumb"
           >
             <Link href="/support" className="transition-colors hover:text-lime">
@@ -80,7 +80,7 @@ export default async function SupportTopicPage({ params }: TopicPageProps) {
         />
       </section>
 
-      <div className="mx-auto grid max-w-[1240px] gap-10 px-5 py-16 lg:grid-cols-[minmax(0,1fr)_300px] lg:py-24">
+      <div className="mx-auto grid max-w-310 gap-10 px-5 py-16 lg:grid-cols-[minmax(0,1fr)_300px] lg:py-24">
         <main>
           <p className="datum text-xs font-semibold uppercase tracking-[0.15em] text-lime">
             Topic answers
